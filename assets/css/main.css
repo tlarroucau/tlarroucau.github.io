@@ -36,6 +36,15 @@ blockquote, q {
 	quotes: none;
 	margin: 1em 0;
 	line-height: 1.5em;
+}blockquote a {
+	padding: 0.125em;
+	color: #011F5B;
+	font-style: normal;
+	font-weight: 600;
+}blockquote a:hover{
+	transition: background-color 0.1s ease-in-out, border-bottom 0.2s ease-in-out;
+	background-color: rgba(1,31,91,0.25);
+	border-bottom: solid 2px #011F5B;
 }
 
 	blockquote:before, blockquote:after, q:before, q:after {
