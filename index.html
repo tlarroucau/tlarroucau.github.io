@@ -190,6 +190,54 @@
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
+			
+	<script>
+	$("#published").on("click","a",function(e) {
+		if ($(e.target).closest("#abstract")[0]) {
+		  // Click is on the planning link, toggle the panel and prevent the default
+		  e.preventDefault();
+  		  $(this).closest("tr").nextUntil(".parent").toggleClass("open");
+		} else {
+		  // Not do anything
+		}
+	});
+	$("#job_market_paper").on("click","a",function(e) {
+		if ($(e.target).closest("#abstract")[0]) {
+		  // Click is on the planning link, toggle the panel and prevent the default
+		  e.preventDefault();
+  		  $(this).closest("tr").nextUntil(".parent").toggleClass("open");
+		} else {
+		  // Not do anything
+		}
+	});
+	$("#work_in_progress").on("click","a",function(e) {
+		if ($(e.target).closest("#abstract")[0]) {
+		  // Click is on the planning link, toggle the panel and prevent the default
+		  e.preventDefault();
+  		  $(this).closest("tr").nextUntil(".parent").toggleClass("open");
+		} else {
+		  // Not do anything
+		}
+	});
+	$("#working_papers").on("click","a",function(e) {
+		if ($(e.target).closest("#abstract")[0]) {
+		  // Click is on the planning link, toggle the panel and prevent the default
+		  e.preventDefault();
+  		  $(this).closest("tr").nextUntil(".parent").toggleClass("open");
+		} else {
+		  // Not do anything
+		}
+	});
+	$("#other_papers").on("click","a",function(e) {
+		if ($(e.target).closest("#abstract")[0]) {
+		  // Click is on the planning link, toggle the panel and prevent the default
+		  e.preventDefault();
+  		  $(this).closest("tr").nextUntil(".parent").toggleClass("open");
+		} else {
+		  // Not do anything
+		}
+	});
+	</script>			
 		
 </body>
 </html>
