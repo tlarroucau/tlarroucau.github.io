@@ -24,8 +24,8 @@ section, summary, time, mark, audio, video {
 	vertical-align: baseline;}
 .paper{
 	height: 100%;
-	overflow-y: scroll;
 	display: flex;
+	margin-bottom: 2em;
 	}
 .bbb {
 	margin-top: 1.75em;
@@ -93,7 +93,6 @@ section, summary, time, mark, audio, video {
 	.popup-inner {
 	position: relative;
 	bottom: -100vw;
-	display: flex;
 	align-items: center;
 	max-width: auto;
 	width: 90%;
@@ -101,22 +100,32 @@ section, summary, time, mark, audio, video {
 	background-color: #fff;
 	transition: .82s ease-in-out;
 	padding: 2em;
-
+	}
+	.popup-of {
+	width: auto;
+	height: 100%;
+	overflow: auto;
 	}
 	.popupphoto {
 	width: 50%;
 	height: 100%;
 	}
 	.popupphoto img {
+	vertical-align: top;
 	position: relative; 
 	display: inline-block;
 	}
 	.popuptext {
 	justify-content: center;
-	width: 50%;
 	margin: 1em;
 	height: fit-content;
+	top: 0px;
 	}
+	.ccc {
+		width: 100%;
+		clear: both;
+		display: inline-block;
+		}
 	.popuptext h1 {
 	font-size: 2.875rem;
 	margin-top: 0.75em;
@@ -2941,6 +2950,7 @@ input, select, textarea {
 			flex-grow: 1;
 			margin: 0.5em 0 2em 0;
 		}
+		
 
  @media screen and (min-width: 1680px){
 		#header > nav {
@@ -3057,6 +3067,124 @@ input, select, textarea {
 
 	@media screen and (max-width: 1680px) {
 
+		.paper{
+			height: 100%;
+			display: inline-block;
+			margin-bottom: 2em;
+			}
+			.bbb {
+				margin-top: 1.75em;
+				width: 40%;
+				height: 100%;
+				padding: 1em;
+				}
+				.myimage {
+					margin: -2em 0 20% 0;
+							}
+		.popup {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: fixed;
+			width: 100vw;
+			height: 100vh;
+			bottom: 0;
+			right: 0;
+			background-color: rgba(0, 0, 0, 0.8);
+			z-index: 2;
+			visibility: hidden;
+			opacity: 0;
+			overflow: hiden;
+			transition: .82s ease-in-out;
+			}
+			.popup-inner {
+			position: relative;
+			bottom: -100vw;
+			align-items: center;
+			max-width: auto;
+			width: 90%;
+			height: 80%;
+			background-color: #fff;
+			transition: .82s ease-in-out;
+			padding: 2em;
+			}
+			.popup-of {
+			width: auto;
+			height: 100%;
+			overflow: auto;
+			}
+			.popupphoto {
+			height: 20%;
+			display: inline-block;
+			width: 90%;
+			}
+			.popupphoto img {
+			width: 100%;
+			height: auto;
+			vertical-align: top;
+			position: relative; 
+			display: inline-block;
+			}
+			.popuptext {
+			display: inline-block;
+			justify-content: center;
+			margin: 0.125em;
+			height: fit-content;
+			top: 0px;
+			width: 90%
+;
+			}
+			.ccc {
+				width: 90%;
+				clear: both;
+				display: inline-block;
+				}
+			.popuptext h1 {
+			font-size: 2.275rem;
+			margin-top: 0.75em;
+			color: #011F5B !important;
+			}
+			.popuptext p {
+			font-size: 1.75rem;
+			color: #686868;
+			line-height: 1.25;
+			}
+			
+			.popuptext a {
+				text-decoration: none;
+				color: white;
+				background-color:  #47BDFF;
+				padding: 2%;
+				width: max-content;
+			}.popuptext a:hover {
+				color: white;
+			}
+			.popup:target {
+			visibility: visible;
+			opacity: 1;
+			}
+			.popup:target .popup-inner {
+			bottom: 0;
+			right: 0;
+			transform: rotate(0);
+			}
+			.closepopup {
+			position: absolute;
+			right: -1rem;
+			top: -1rem;
+			width: 3rem;
+			height: 3rem;
+			font-size: .875rem;
+			font-weight: 300;
+			border-radius: 100%;
+			background-color: #47BDFF;
+			z-index: 4;
+			color: #fff;
+			line-height: 3rem;
+			text-align: center;
+			cursor: pointer;
+			text-decoration: none;
+			}
 		/* Basic */
 
 			body, input, select, textarea {
