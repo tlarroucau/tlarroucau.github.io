@@ -214,6 +214,23 @@ body {
 	-webkit-text-size-adjust: none;
 }
 
+
+
+
+
+
+/* Typography Improvements */
+body {
+    font-family: 'Roboto', sans-serif; /* Using Roboto font from Google Fonts */
+    line-height: 1.6; /* Increased line height for better readability */
+}
+
+
+
+
+
+
+
 mark {
 	background-color: transparent;
 	color: inherit;
