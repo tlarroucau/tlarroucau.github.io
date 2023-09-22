@@ -3672,3 +3672,13 @@ button:hover, input[type="submit"]:hover, input[type="button"]:hover {
     background-color: #0D47A1; /* Darker shade of blue for hover effect */
 }
 
+
+
+/* Navigation Enhancements */
+nav ul li a {
+    transition: color 0.3s ease; /* Smooth transition for color changes */
+}
+
+nav ul li a:hover {
+    color: #1565C0; /* Highlight color for navigation links on hover */
+}
