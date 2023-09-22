@@ -217,20 +217,6 @@ body {
 
 
 
-
-
-/* Typography Improvements */
-body {
-    font-family: 'Roboto', sans-serif; /* Using Roboto font from Google Fonts */
-    line-height: 1.6; /* Increased line height for better readability */
-}
-
-
-
-
-
-
-
 mark {
 	background-color: transparent;
 	color: inherit;
@@ -3647,3 +3633,42 @@ input, select, textarea {
 a {
 	text-decoration: none;
 			}
+
+
+
+
+
+
+
+
+
+/* Typography Improvements */
+body {
+    font-family: 'Roboto', sans-serif; /* Using Roboto font from Google Fonts */
+    line-height: 1.6; /* Increased line height for better readability */
+}
+
+
+
+
+
+
+/* Color Scheme Improvements */
+a:hover, a:focus {
+    color: #1565C0; /* Highlight color for links on hover and focus */
+}
+
+button, input[type="submit"], input[type="button"] {
+    background-color: #1565C0; /* Highlight color for buttons */
+    color: #ffffff; /* White text color for better contrast */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, input[type="submit"]:hover, input[type="button"]:hover {
+    background-color: #0D47A1; /* Darker shade of blue for hover effect */
+}
+
