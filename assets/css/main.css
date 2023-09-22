@@ -3710,15 +3710,19 @@ section {
 
 
 
-/* Adjusting font size for pop-ups on mobile devices */
-@media only screen and (max-width: 768px) { /* Targeting screens with width up to 768px */
+/* Font size for larger screens (Desktops) */
+@media only screen and (min-width: 769px) {
     .popuptext p {
-        font-size: 0.85rem; /* Further reduced font size for the paragraph content within the pop-up */
+        font-size: 1.45rem; /* Font size for desktops */
     }
-    .ccc h1 {
-        font-size: 1.2rem; /* Further reduced font size for the heading within the pop-up */
-    }
-    /* Add any other adjustments for other elements within the pop-up if needed */
 }
+
+/* Font size for smaller screens (Mobile Devices) */
+@media only screen and (max-width: 768px) {
+    .popuptext p {
+        font-size: 0.85rem; /* Reduced font size for mobile devices */
+    }
+}
+
 
 
