@@ -3726,3 +3726,18 @@ section {
 
 
 
+/* Font size for titles on larger screens (Desktops) */
+@media only screen and (min-width: 769px) {
+    .ccc h1 {
+        font-size: 2rem; /* Font size for desktops */
+    }
+}
+
+/* Font size for titles on smaller screens (Mobile Devices) */
+@media only screen and (max-width: 768px) {
+    .ccc h1 {
+        font-size: 1.2rem; /* Reduced font size for mobile devices */
+    }
+}
+
+
