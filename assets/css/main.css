@@ -3682,3 +3682,28 @@ nav ul li a {
 nav ul li a:hover {
     color: #1565C0; /* Highlight color for navigation links on hover */
 }
+
+
+
+
+
+/* Content Layout Enhancements */
+
+/* Spacing between sections */
+section {
+    margin-bottom: 40px; /* Additional spacing between sections */
+}
+
+/* Content Cards */
+.content-card {
+    background-color: #ffffff; /* White background for the card */
+    padding: 20px; /* Padding inside the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    border-radius: 5px; /* Rounded corners */
+    transition: box-shadow 0.3s ease; /* Smooth transition for shadow changes */
+}
+
+.content-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Slightly pronounced shadow on hover */
+}
+
