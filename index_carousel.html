@@ -23,6 +23,7 @@
 <style>
 .paper{flex-direction:column;align-items:center;}
 .popupphoto.carousel{position:relative;width:100%;margin-top:1em;text-align:center;}
+
 .popupphoto.carousel img{display:none;width:auto;max-width:80%;height:auto;object-fit:contain;margin:0 auto;}
 .popupphoto.carousel img.active{display:block;}
 .popupphoto.carousel button{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.5);color:#fff;border:none;padding:0.5em;cursor:pointer;}
@@ -642,6 +643,7 @@ $(function(){
       $imgs.eq(idx).addClass('active').show();
     }
 
+
     $prev.on('click',function(e){
       e.stopPropagation();
       $imgs.eq(idx).removeClass('active').hide();
@@ -657,6 +659,7 @@ $(function(){
     var interval = setInterval(showNext, 5000);
     $c.on('mouseenter',function(){ clearInterval(interval); });
     $c.on('mouseleave',function(){ interval = setInterval(showNext, 5000); });
+
   });
 });
 </script>
