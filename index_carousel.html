@@ -1,0 +1,664 @@
+<!DOCTYPE HTML>
+
+<!--
+	Read Only by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+
+<html>
+	<head>
+
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+		
+		<title>Tomas Larroucau Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+		<link href="images/asu-2.svg" type="text/css" rel="shortcut icon"/>
+		<meta name="author" content="NAnodelabarra."/>
+
+<style>
+.paper{flex-direction:column;align-items:center;}
+.popupphoto.carousel{position:relative;width:100%;margin-top:1em;text-align:center;}
+.popupphoto.carousel img{display:none;width:auto;max-width:80%;height:auto;object-fit:contain;margin:0 auto;}
+.popupphoto.carousel img.active{display:block;}
+.popupphoto.carousel button{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.5);color:#fff;border:none;padding:0.5em;cursor:pointer;}
+.popupphoto.carousel button.prev{left:0.5em;}
+.popupphoto.carousel button.next{right:0.5em;}
+</style>
+
+	<script type="text/javascript">
+		function show_hide_row(row)
+		{
+		 $("#"+row).toggle();
+		}
+		</script>
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-173553333-1"></script>
+		<script>
+  		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+
+  		gtag('config', 'UA-173553333-1');
+		</script>
+
+
+	</head>
+
+	<body class="is-preload">
+
+		<!-- Bg -->
+
+		<!-- Header -->
+<section id="header">
+	<header>
+		<span class="image avatar"><img src="images/avatar.jpg" alt="" /></span>
+		<h1 id="logo"><a href="#about" class="scrolly active active-locked">
+		Tomas Larroucau</a></h1>
+		<p></p>
+	</header>
+	<nav id="nav">
+		<ul>
+			<li><a href="#about">About</a></li>
+		<!--	<li><a href="#jmp">Job Market Paper</a></li>   -->
+			<li><a href="#research">Research</a></li>
+		<!--	<li><a href="#working_papers">Working Papers</a></li> -->
+		<!--	<li><a href="#publications">Publications</a></li> -->
+		<!--	<li><a href="#work_in_progress">Work In-Progress</a></li> -->
+			<li><a href="#education">Education</a></li>
+			<li><a href="Resume.pdf" ><span class="label">Curriculum Vitae</span></a></li>
+		</ul>
+	</nav>
+	<footer>
+		<ul class="icons">
+			<li><pe><a href="tel:+1 215 900 67 43" class="icon fa-phone-square fa-phone"><span class="label">Phone</span></a></pe></li>
+			<li><pe><a href="mailto:Tomas.Larroucau@asu.edu" class="icon fa-envelope"><span class="label">Email</span></a></pe></li>
+			<li><pe><a href="https://github.com/tlarroucau/" class="icon fa-github"><span class="label">Github</span></a></pe></li>
+			<li><a href="https://www.researchgate.net/profile/Tomas_Larroucau" class="ai ai-researchgate-square ai-2x"><span class="label">ResearchGate</span></a></li>
+			<li><a href="https://scholar.google.com/citations?hl=en&user=nkw96qAAAAAJ" class="ai ai-google-scholar-square ai-2x"><span class="label">GoogleScholar</span></a></li>
+			<li><pe><a href="https://cl.linkedin.com/in/tom%C3%A1s-larroucau-15b60728" class="icon fa-linkedin-square"><span class="label">Linkedin</span></a></pe></li>
+		</ul>
+		<ul class="copyright">
+			<li>By <a href="http://nanodelabarra.github.io/">NAnodelabarra</a></li>
+		</ul>
+	</footer>
+</section>
+
+		<!-- Wrapper -->
+<img src="images/banner.jpg" alt="" class="image main" />
+<div id="wrapper">
+		<!-- Main -->
+<div id="main">
+
+<!-- About -->
+	<section id="about">
+		<div class="container">
+			<header class="major">
+				<h2>About</h2>
+			</header>
+			<p> I am an Assistant Professor in the Department of Economics at the W. P. Carey School of Business at Arizona State University. 
+				I am an Applied Economist working on Empirical IO/Market Design, Education Economics, and Labor Economics. I broadly study 
+				market design policies in practice in the context of matching markets. My current research focuses on how dynamic considerations
+				and imperfect information can affect the design of matching markets, change the performance of assignment mechanisms used in 
+				many countries worldwide, and impact agents' outcomes.
+				</p>
+		<!--	<p>
+				I'm currently working on projects related to the redesign of the Chilean centralized College
+				Admissions' system and understanding students' application behavior under limited information, among others.
+				In other work, my collaborators and I are working with policymakers to evaluate how we 
+				can improve equity and efficiency of assignment systems in higher education by reducing
+				mistakes and diminishing information frictions students can face.
+				</p> -->
+		</div>
+	</section>
+
+		<!-- Research -->
+			<section id="research">
+				<div class="content-card">
+				<div class="container">
+
+					<header class="major">
+					<h2>Research</h2>
+					</header>
+
+                        <header class="minor">
+			<h3>Working Papers</h3>
+			</header>
+<blockquote>
+    <a href="#popup22">Dynamic College Admissions</a>, with I. Ríos.
+    <a href="JMP_Larroucau.pdf" style="color: black; font-weight: normal; text-decoration: none;">[See paper]</a>
+    <a href="JMP_electronic_companion_Larroucau.pdf" style="color: black; font-weight: normal; text-decoration: none;">[See electronic companion]</a>
+    <br>
+    <span style="font-style: normal; color: black;">Reject and Resubmit,</span> <b style="font-style: italic; color: black;">Econometrica</b>.
+
+</blockquote>
+
+
+			<div class="container">
+<!--				<p style="font-size:0.95rem">We analyze the effects of centralized assignment mechanisms on downstream outcomes 
+					in higher education. To do so, we study the relevance of incorporating dynamic incentives 
+					and eliciting private information about students’ preferences to improve their welfare and 
+					outcomes beyond their initial assignment, including their decisions to switch or drop out. We show 
+					that the most common assignment mechanism, the Deferred Acceptance (DA) algorithm, can result 
+					in significant inefficiencies as it fails to elicit cardinal information on students’ preferences. We
+					collect novel data about students’ preferences, their beliefs on admission chances, and their 
+					college outcomes for the Chilean college system. We analyze two main behavioral channels that 
+					explain students’ dynamic decisions. First, by exploiting discontinuities on admission cutoffs,
+					we show that not being assigned to ones’ top-reported preference has a positive causal effect
+					on the probability of re-applying to the centralized system and switching one’s major/college, 
+					suggesting that students switch to more preferred programs due to initial mismatches. Second, 
+					we find that a significant fraction of students change their preferences during their college
+					progression, and that these changes are correlated with their grades, suggesting that students 
+					may learn about their match-quality. Based on these facts, we build and estimate a structural 
+					model of students’ college progression in the presence of a centralized admission system, allowing 
+					students to learn about their match-quality over time and re-apply to the system. We use the 
+					estimated model to disentangle how much of students’ switching behavior is due to initial mismatches
+					and learning, and we analyze the impact of changing the assignment mechanism and the re-application
+					rules on the efficiency of the system. Our counterfactual results show that policies that provide
+					score bonuses that elicit information on students’ cardinal preferences and leverage dynamic
+					incentives can significantly decrease switchings, dropouts, and increase students’ overall welfare.
+					</p>
+
+					<div class="container">
+						<p style="font-size:0.95rem">
+							<ul>Initial Mismatches and Dynamic Considerations in College Applications</ul>
+						</p>
+					<div class="popupphoto carousel">
+						<img src="images/Dynamic College Admissions_picture_3.png" alt="" class="myimage">
+					</div>
+					</div>
+
+					<div class="container">
+						<p style="font-size:0.95rem">
+							<ul>Preferences' changes Consistent with Learning</ul>
+						</p>
+					<div class="popupphoto carousel">
+					<img src="images/Learning.png" alt="" class="myimage">
+					</div>
+          </div>
+-->
+		<!--			<div class="container">
+						<p style="font-size:0.95rem">
+							<ul>Effect of Incorporating Dynamic Incentives and Eliciting Cardinal Preferences</ul>
+						</p>
+					<div class="popupphoto carousel">
+					<img src="images/Summary_counterfactuals.png" alt="" class="myimage">
+					</div>
+				  </div>
+       -->
+
+
+
+			<div class="popup" id="popup22">
+			<div class="popup-inner">
+				<div class="popup-of">
+				<div class="ccc popuptext ccc">
+					<h1>Dynamic College Admissions</h1>
+					</div>
+			<div class="paper">
+			<div class="popuptext">
+			<p>We study the relevance of incorporating dynamic incentives and eliciting private 
+				information about students’ preferences to improve their welfare and down-stream outcomes in centralized
+				assignment mechanisms. Using administrative data and two nationwide surveys, we identify that two 
+				behavioral channels largely explain students’ dynamic decisions: (i) initial mismatches and (ii) learning. 
+				Based on these facts, we build and estimate a structural model of students’ college progression in the 
+				presence of a centralized admission system, allowing students to learn about their match-quality over time
+				and re-apply to the system. We use the estimated model to analyze the impact of changing the assignment 
+				mechanism and the re-application rules on the efficiency of the system. Our counterfactual results show 
+				that policies that provide score bonuses that elicit information on students’ cardinal preferences and 
+				leverage dynamic incentives can significantly decrease switchings and increase students’ overall welfare.
+
+
+				</p>
+				<a href="JMP_Larroucau.pdf" class="see title" >See paper</a>
+				<a href="JMP_electronic_companion_Larroucau.pdf" class="see title">See electronic companion</a>
+			</div><div class="popupphoto carousel">
+				<img src="images/Dynamic College Admissions_picture.png" alt="">
+				<img src="images/Dynamic College Admissions_picture_2.png" alt="">
+				</div>
+			</div>
+			</div>
+			<a class="closepopup" href="#working_papers"><i class="fa fa-times" aria-hidden="true"></i></a>
+		</div>
+			</div>
+			</div>
+	
+
+					
+		      <blockquote><a href="#popup100">College Application Mistakes and the Design of Information Policies at Scale
+ </a>, with I. Ríos, A. Fabre, and C. Neilson.
+			<a href="Information_Frictions_and_Application_Mistakes_LRFN_2025.pdf" style="color: black; font-weight: normal; text-decoration: none;">[See paper (new draft!)]</a>
+			<br>
+			<span style="font-style: normal; color: black;">Revise and Resubmit,</span> <b style="font-style: italic; color: black;">Journal of Political Economy</b>.
+			</blockquote>      
+		        <div class="container">
+			<div class="popup" id="popup100">
+			<div class="popup-inner">
+				<div class="popup-of">
+				<div class="ccc popuptext ccc">
+					<h1>College Application Mistakes and the Design of Information Policies at Scale </h1>
+					</div>
+			<div class="paper">
+			<div class="popuptext">
+			<p>We study whether large-scale information interventions can improve college applicant outcomes. Using nationwide surveys, we document widespread information frictions and the prevalence of application mistakes. To address these frictions, we conducted a field experiment that provided applicants with personalized information on admission chances and program characteristics. The intervention increased assignment probabilities for previously unmatched students by 44% and increased placement into higher-ranked programs by 20%. Following
+these results and with the collaboration of policymakers, we successfully scaled up the policy nationwide. Our findings suggest that personalized information policies implemented at scale can effectively reduce application mistakes and improve student outcomes.
+			</p>
+			<a href="Information_Frictions_and_Application_Mistakes_LRFN_2025.pdf" class="see title">See paper</a>
+			</div><div class="popupphoto carousel">
+				<img src="images/10.png" alt="">
+				</div>
+			</div>
+		</div>
+			<a class="closepopup" href="#working_papers"><i class="fa fa-times" aria-hidden="true"></i></a>
+			</div>
+			</div>
+			</div>	
+		
+
+
+		
+					
+		<blockquote><a href="#popup34">Physicians’ Occupational Licensing and the Quantity-Quality Trade-Off</a>, with J. P. Atal, P. Muñoz, and C. Otero.
+			<a href="https://cristobalotero.github.io/files/physicians.pdf" style="color: black; font-weight: normal; text-decoration: none;">[See paper]</a>
+		  </blockquote>
+			<div class="container">
+			<div class="popup" id="popup34">
+			<div class="popup-inner">
+				<div class="popup-of">
+				<div class="ccc popuptext ccc">
+					<h1>Physicians’ Occupational Licensing and the Quantity-Quality Trade-Off</h1>
+					</div>
+			<div class="paper">
+			<div class="popuptext">
+			<p>Occupational licensing is a widespread quality regulation that increases the quality of
+			labor but reduces its quantity. We provide a framework to empirically quantify this trade-off and
+			apply it to physician licensing, where both quality and access to care are critical concerns. Using
+			quasi-exogenous variation driven mostly by a recent and unprecedented migration of physicians
+			to Chile, we show that more physicians improve access and patient outcomes in tertiary care,
+			including mortality. We also find that lower quality—as measured by physician performance
+			on the licensing exam—worsens patient outcomes. Building on these findings, we evaluate the
+			implications of locally changing the stringency of the current licensing policy.</p>
+				<a href="https://cristobalotero.github.io/files/physicians.pdf" class="see title">See paper</a>
+			</div><div class="popupphoto carousel">
+				<img src="images/simple_licensing.jpg" alt="">
+				<img src="images/iso_mortality_counterfactual.jpg" alt="">
+				</div>
+			</div>
+		</div>
+			<a class="closepopup" href="#working_papers"><i class="fa fa-times" aria-hidden="true"></i></a>
+			</div>
+			</div>
+			</div>
+
+		
+		<blockquote><a href="#popup33">Do “short-list” students report truthfully? Strategic behavior in the Chilean college admissions problem</a>, with I. Ríos.
+			<a href="Paper Short lists.pdf" style="color: black; font-weight: normal; text-decoration: none;">[See paper]</a>
+		  </blockquote>
+			<div class="container">
+			<div class="popup" id="popup33">
+			<div class="popup-inner">
+				<div class="popup-of">
+				<div class="ccc popuptext ccc">
+					<h1>Do “short-list” students report truthfully?</h1>
+					</div>
+			<div class="paper">
+			<div class="popuptext">
+			<p>We analyze the application process in the Chilean College Admissions problem. Students
+				can submit up to 10 preferences, but most students do not fill their entire application list
+				("short-list"). Even though students face no incentives to misreport, we find evidence of
+				strategic behavior as students tend to omit programs for which their admission probabilities
+				are too low. To rationalize this behavior, we construct a portfolio problem where students
+				maximize their expected utility given their preferences and beliefs over admission probabilities.
+				We adapt the estimation procedure proposed by Agarwal and Somaini (2018) to solve
+				a large portfolio problem. To simplify this task, we show that it is sufficient to compare a
+				ROL with only a subset of ROLs ("one-shot swaps") to ensure its optimality without running
+				into the curse of dimensionality. To better identify the model, we exploit a unique
+				exogenous variation on the admission weights over time. We find that assuming truth-telling
+				leads to biased results. Specifically, when students only include programs if it is strictly
+				profitable to do so, assuming truth-telling underestimates how preferred selective programs
+				are and overstates the value of being unassigned and the degree of preference heterogeneity
+				in the system. Ignoring the constraint on the length of the list can also result in biased
+				estimates, even if the proportion of constrained ROLs is relatively small. Our estimation
+				results strongly suggest that "short-list" students should not be interpreted as truth-tellers,
+				even in a seemingly strategy-proof environment. Finally, we apply our estimation method to
+				estimate students' preferences for programs and majors in Chile and find strong differences
+				in preferences regarding students' gender and scores.</p>
+				<a href="Paper Short lists.pdf" class="see title">See paper</a>
+			</div><div class="popupphoto carousel">
+				<img src="images/Do “Short-List” Students Report Truthfully Strategic Behavior in the Chilean College Admissions Problem_picture.png" alt="">
+				<img src="images/Short_list_picture_2.png" alt="">
+				</div>
+			</div>
+		</div>
+			<a class="closepopup" href="#working_papers"><i class="fa fa-times" aria-hidden="true"></i></a>
+			</div>
+			</div>
+			</div>
+
+					
+
+
+			<br>
+			<header class="minor">
+			<h3>Work In-Progress</h3>
+			</header>
+					
+			
+
+			<blockquote><a href="#popup99"> Hybrid Dutch auctions and Toxic bonds</a>, with N. Bozzo, T. Mylovanov, and R. Vohra.</blockquote>
+
+			<blockquote><a href="#popup140"> The Role of Study Habits on Academic Performance </a>, with with A. Affonso, A. Aucejo, and S. El Khoury.</blockquote>
+
+			<blockquote><a href="#popup140"> Platform Complexities and their Implications for Application Mistakes </a>, with I. Rios, M. Martinez , and C. Neilson.</blockquote>
+			
+			<blockquote><a href="#popup150"> The Effect of Automation on the U.S Labor Market under the Affordable Care Act </a>, with H. Fang, and A. Shephard.</blockquote>
+			
+			
+
+
+
+
+
+<br>
+<header class="minor">
+<h3>Selected Publications</h3>
+</header>
+
+<blockquote><a href="#popup44">Improving the Chilean College Admissions System</a>, with R. Cominetti, I. Ríos and G. Parra. First place, Doing Good with Good OR - Student Paper Competition (2018).
+<a href="paper_OR.pdf" style="color: black; font-weight: normal; text-decoration: none;">[See paper]</a>
+<br>
+<b style="font-style: italic; color: black;">Operations Research</b><span style="font-style: normal; color: black;">, 2021.</span>
+</blockquote>
+<div class="container">
+<div class="popup" id="popup44">
+<div class="popup-inner">
+	<div class="popup-of">
+<div class="ccc popuptext ccc">
+	<h1>Improving the Chilean College Admissions System</h1>
+	</div>
+<div class="paper">
+<div class="popuptext">
+<p>In this paper we present the design and implementation of a new system to solve the Chilean college
+	admissions problem. We develop an algorithm that obtains all stable allocations when preferences are not
+	strict and when all tied students in the last seat of a program (if any) must be allocated, and we used this
+	algorithm to determine which mechanism was used to perform the allocation. In addition, we propose a
+	new method to incorporate the affirmative action that is part of the system and correct the inefficiencies
+	that arise from having double-assigned students. By unifying the regular admission with the affirmative
+	action, we have improved the allocation of approximately 3% of students every year since 2016. From a
+	theoretical standpoint, we introduce a new concept of stability and we show that some desired properties,
+	such as strategy-proofness and monotonicity, cannot be guaranteed under
+	flexible quotas. Nevertheless, we
+	show that the mechanism is strategy-proof in the large, and therefore truthful reporting is approximately
+	optimal.</p>
+	<a href="paper_OR.pdf" class=" see title">See paper</a>
+</div><div class="popupphoto carousel">
+	<img src="images/Improving the Chilean College Admissions System_picture.pdf.png" alt="">
+	</div>
+</div>
+</div>
+<a class="closepopup" href="#working_papers"><i class="fa fa-times" aria-hidden="true"></i></a>
+</div>
+</div>
+</div>
+
+			<br>
+			<header class="minor">
+			<h3>Other Publications</h3>
+			</header>
+
+			<blockquote><a href="#popup66">Effect of Including High-School Grades Rank in the Admission Process to Chilean Universities</a>, with A. Mizala and I. Ríos.
+			<a href="http://eds.a.ebscohost.com/abstract?site=eds&scope=site&jrnl=07171013&AN=103637260&h=1giBMitMkYYfJP0sM5eu7v2SLhpWGlV0L0XjBHq%2bgEC%2fNo%2bspP32xOfXDMQAmiIdghhCDyxgjZLqQaLjrQBx3Q%3d%3d&crl=c&resultLocal=ErrCrlNoResults&resultNs=Ehost&crlhashurl=login.aspx%3fdirect%3dtrue%26profile%3dehost%26scope%3dsite%26authtype%3dcrawler%26jrnl%3d07171013%26AN%3d103637260" style="color: black; font-weight: normal; text-decoration: none;">[See paper]</a>
+			<br>
+			<b style="font-style: italic; color: black;">Pensamiento Educativo</b><span style="font-style: normal; color: black;">, 52 (1), 95–118, 2015.</span>
+			</blockquote>
+			<div class="container">
+			<div class="popup" id="popup66">
+			<div class="popup-inner">
+				<div class="popup-of">
+			<div class="ccc popuptext ccc">
+			<h1>Effect of Including High-School Grades Rank in the Admission Process to Chilean Universities</h1>
+				</div>
+			<div class="paper">
+			<div class="aaa popuptext">
+			<p >This paper analyses the effect of including high school grade rankings as a new factor in the admission process
+				to Chilean universities. The paper evaluates the impact of different weighting strategies of the high school grade
+				ranking and identifies socioeconomic and gender characteristics of the students who were benefited and harmed by
+				the inclusion of this new factor. Starting with the weightings of the different factors considered in the Admission
+				Process for 2012, we simulate, using a selection algorithm, alternative weightings for high school grade rankings
+				in the 2013 Admission Process. We also evaluate the effect of the actual increase in the weighting of grade ranking
+				in the 2014 admission process. Even though the impact on students' entrance and exit from the selection list
+				is rather small, the introduction of the high school grade ranking into the admission process has an effect on
+				the composition of the students selected, producing greater socioeconomic and gender equality.</p>
+				<a href="http://eds.a.ebscohost.com/abstract?site=eds&scope=site&jrnl=07171013&AN=103637260&h=1giBMitMkYYfJP0sM5eu7v2SLhpWGlV0L0XjBHq%2bgEC%2fNo%2bspP32xOfXDMQAmiIdghhCDyxgjZLqQaLjrQBx3Q%3d%3d&crl=c&resultLocal=ErrCrlNoResults&resultNs=Ehost&crlhashurl=login.aspx%3fdirect%3dtrue%26profile%3dehost%26scope%3dsite%26authtype%3dcrawler%26jrnl%3d07171013%26AN%3d103637260"  class="see title"><span class="label">See paper</a>
+			</div><div class="popupphoto carousel">
+				<!--<img src="images/Ranking_paper_picture.png" alt="" class="myimageright">-->
+				<img src="images/Ranking_paper_picture.png" alt="">
+				<!--<img src="images/Ranking_paper_picture_2.png" alt="" class="myimageleft">-->
+			</div>
+			</div>
+		</div>
+			<a class="closepopup" href="#publications"><i class="fa fa-times" aria-hidden="true"></i></a>
+			</div>
+			</div>
+			</div>
+			<blockquote><a href="#popup77">Hunter-gatherers maintain assortativity in cooperation despite high-levels of residential change and mixing</a>, with K. Smith, I. Mabulla, C. Apicella.
+				<a href="https://static1.squarespace.com/static/54c826b8e4b0b23fee6c1343/t/5ba50e98e79c703f662699c6/1537543836700/45+Smith+et+al+in+press+CURR+BIOL.pdf"  style="color: black; font-weight: normal; text-decoration: none;">[See paper]</a>
+				<br>
+				<b style="font-style: italic; color: black;">Current Biology</b><span style="font-style: normal; color: black;">, 2018.</span>
+      </blockquote>
+			<div class="container">
+			<div class="popup" id="popup77">
+			<div class="popup-inner">
+				<div class="popup-of">
+				<div class="ccc popuptext ccc">
+					<h1>Hunter-gatherers maintain assortativity in cooperation despite high-levels of residential change and mixing.</h1>
+					</div>
+			<div class="paper">
+			<div class="popuptext">
+			<p>Widespread cooperation is a defining feature of human societies from hunter-gatherer bands to nation states ,
+				but explaining its evolution remains a challenge. Although positive assortment of cooperators is recognized as a basic requirement
+				for the evolution of cooperation, the mechanisms governing assortment are debated. Moreover, the social structure of modern
+				huntergatherers, characterized by high mobility, residential mixing, and low genetic relatedness, undermines assortment and adds
+				to the puzzle of how cooperation evolved. Here, we analyze four years of data (2010, 2013, 2014, 2016) tracking residence and
+				levels of cooperation elicited from a public goods game in Hadza hunter-gatherers of Tanzania. Data were collected from 56 camps,
+				comprising 383 unique individuals, 137 of whom we have data for two or more years. Despite significant residential mixing,
+				we observe a robust pattern of assortment that is necessary for cooperation to evolve; in every year, Hadza camps exhibit high
+				between-camp and low within-camp variation in cooperation. We find little evidence that cooperative behavior within individuals
+				is stable over time or that similarity in cooperation between dyads predicts their future cohabitation. Both sets of findings are
+				inconsistent with models that assume stable cooperative and selfish types, including partner choice models. Consistent with social
+				norms, culture, and reciprocity theories, the strongest predictor of an individual’s level of cooperation is the mean cooperation of
+				their current campmates. These findings underscore the adaptive nature of human cooperation—particularly its responsiveness to social
+				contexts—as a feature that is important in generating the assortment necessary for cooperation to evolve.</p>
+				<a href="https://static1.squarespace.com/static/54c826b8e4b0b23fee6c1343/t/5ba50e98e79c703f662699c6/1537543836700/45+Smith+et+al+in+press+CURR+BIOL.pdf"  class="see title "><span class="label">See paper</a>
+			</div><div class="popupphoto carousel">
+
+				<img title="Residential and cooperation changes" src="images/plot_animated_ind.gif" alt="">
+
+				</div>
+
+
+			</div>
+		</div>
+			<a class="closepopup" href="#publications"><i class="fa fa-times" aria-hidden="true"></i></a>
+			</div>
+			</div>
+			</div>
+		<!--	<blockquote><a href="https://revistaestudiospoliticaspublicas.uchile.cl/index.php/REPP/article/view/38351/39989" class="title"><span class="label">Estudio de los factores determinantes de la deserción en el sistema universitario chileno</a>, in Revista Estudios de Políticas Públicas, 1, 1 – 23, 2015.
+				<a href="https://revistaestudiospoliticaspublicas.uchile.cl/index.php/REPP/article/view/38351/39989"  class="see title "><span class="label">[See paper]</a>
+      </blockquote>
+-->
+			<!--<blockquote><a href="Simulaciones_Historia.pdf">Efectos del remplazo del puntaje de Historia en el proceso de selección</a>, with I. Ríos (Tech Report). </blockquote> -->
+		
+		
+			<br>	
+			<header class="minor">
+			<h3>Other Working Papers</h3>
+			</header>		
+
+				<blockquote><a href="#popup55">College admissions problem with ties and flexible quotas</a>, with R. Cominetti, I. Ríos and G. Parra.
+					<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2478998" style="color: black; font-weight: normal; text-decoration: none;">[See paper]</a>
+				</blockquote>
+				<div class="container">
+				<div class="popup" id="popup55">
+				<div class="popup-inner">
+					<div class="popup-of">
+					<div class="ccc popuptext ccc">
+						<h1>College admissions problem with ties and flexible quotas.</h1>
+						</div>
+				<div class="paper">
+				<div class="popuptext">
+				<p>We study an extension of the classical college admission problem where applicants have strict preferences but careers may include ties in their preference lists.
+					We present an algorithm which enables us to find stable assignments without breaking ties rules, but considering flexible quotas.
+					We investigate the properties of this algorithm -- stability, optimality -- and we show that the resulting algorithm is neither monotone nor strategy-proof.
+					The mechanism is used to solve real instances of the Chilean college admission problem. Among our results,
+					we show that the welfare of students is increased if flexible quotas and a student-optimal assignment are combined.
+					Finally, we argue why such assignment may be desirable in the Chilean context. </p>
+					<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2478998" class=" see title"><span class="label">See paper</a>
+				</div><div class="popupphoto carousel">
+					<img src="images/College admissions problem with ties and flexible quotas_pictures.png" alt="">
+					</div>
+				</div>
+			</div>
+				<a class="closepopup" href="#working_papers"><i class="fa fa-times" aria-hidden="true"></i></a>
+				</div>
+				</div>
+				</div>
+ </div>
+
+</div>
+				
+	</section>
+
+
+<!-- Education -->
+	<section id="education">
+		<div class="container">
+			<header class="major">
+			<h2>Education</h2>
+			</header>
+			<div class="features">
+				<article>
+					<div class="inner">
+						<h4>Ph.D. in Economics</h4>
+						<p>2015-2021 University of Pennsylvania</p>
+					</div>
+				</article>
+				<article>
+					<div class="inner">
+						<h4>Master in Management and Public Policies</h4>
+						<p>November 2013 University of Chile</p>
+					</div>
+				</article>
+				<article>
+					<div class="inner">
+						<h4>B.A in Industrial Engineering</h4>
+						<p>December 2011 University of Chile</p>
+					</div>
+				</article>
+			</div>
+		</div>
+	</section>
+
+
+</div>
+</div>
+
+<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+	<script>
+	$("#published").on("click","a",function(e) {
+		if ($(e.target).closest("#abstract")[0]) {
+		  // Click is on the planning link, toggle the panel and prevent the default
+		  e.preventDefault();
+  		  $(this).closest("tr").nextUntil(".parent").toggleClass("open");
+		} else {
+		  // Not do anything
+		}
+	});
+	$("#job_market_paper").on("click","a",function(e) {
+		if ($(e.target).closest("#abstract")[0]) {
+		  // Click is on the planning link, toggle the panel and prevent the default
+		  e.preventDefault();
+  		  $(this).closest("tr").nextUntil(".parent").toggleClass("open");
+		} else {
+		  // Not do anything
+		}
+	});
+	$("#work_in_progress").on("click","a",function(e) {
+		if ($(e.target).closest("#abstract")[0]) {
+		  // Click is on the planning link, toggle the panel and prevent the default
+		  e.preventDefault();
+  		  $(this).closest("tr").nextUntil(".parent").toggleClass("open");
+		} else {
+		  // Not do anything
+		}
+	});
+	$("#working_papers").on("click","a",function(e) {
+		if ($(e.target).closest("#abstract")[0]) {
+		  // Click is on the planning link, toggle the panel and prevent the default
+		  e.preventDefault();
+  		  $(this).closest("tr").nextUntil(".parent").toggleClass("open");
+		} else {
+		  // Not do anything
+		}
+	});
+	$("#paper_DEMRE").on("click","a",function(e) {
+		if ($(e.target).closest("#abstract")[0]) {
+		  // Click is on the planning link, toggle the panel and prevent the default
+		  e.preventDefault();
+  		  $(this).closest("tr").nextUntil(".parent").toggleClass("open");
+		} else {
+		  // Not do anything
+		}
+	});
+	</script>
+<script>
+
+$(function(){
+  $('.carousel').each(function(){
+    var $c = $(this);
+    var $imgs = $c.find('img');
+    var idx = 0;
+    $imgs.hide().eq(0).show().addClass('active');
+    var $prev = $('<button class="prev">&#10094;</button>');
+    var $next = $('<button class="next">&#10095;</button>');
+    $c.append($prev).append($next);
+
+    function showNext(){
+      $imgs.eq(idx).removeClass('active').hide();
+      idx = (idx+1)%$imgs.length;
+      $imgs.eq(idx).addClass('active').show();
+    }
+
+    $prev.on('click',function(e){
+      e.stopPropagation();
+      $imgs.eq(idx).removeClass('active').hide();
+      idx = (idx-1+$imgs.length)%$imgs.length;
+      $imgs.eq(idx).addClass('active').show();
+    });
+
+    $next.on('click',function(e){
+      e.stopPropagation();
+      showNext();
+    });
+
+    var interval = setInterval(showNext, 5000);
+    $c.on('mouseenter',function(){ clearInterval(interval); });
+    $c.on('mouseleave',function(){ interval = setInterval(showNext, 5000); });
+  });
+});
+</script>
+</body>
+</html>
