@@ -22,12 +22,11 @@
 
 <style>
 .paper{flex-direction:column;align-items:center;}
-
-.popupphoto.carousel{position:relative;width:100%;margin-top:1em;text-align:center;display:flex;flex-direction:column;align-items:center;}
-.popupphoto.carousel img{display:none;width:auto;max-width:70%;height:auto;object-fit:contain;margin:0 auto;}
+.popupphoto.carousel{position:relative;width:100%;margin-top:1em;text-align:center;display:flex;flex-direction:column;align-items:center;min-height:330px;}
+.popupphoto.carousel img{display:none;max-width:80%;max-height:300px;width:auto;height:auto;object-fit:contain;margin:0 auto;border:3px solid #011F5B;border-radius:8px;padding:4px;box-shadow:0 0 5px rgba(0,0,0,0.2);}
 .popupphoto.carousel img.active{display:block;}
 .popupphoto.carousel .controls{margin-top:0.5em;display:flex;justify-content:center;gap:1em;}
-.popupphoto.carousel button{background:#222;color:#fff;border:none;padding:0.5em 1em;border-radius:4px;cursor:pointer;font-size:1.1em;}
+.popupphoto.carousel button{background:#011F5B;color:#fff;border:none;padding:0.5em 1em;border-radius:4px;cursor:pointer;font-size:1.1em;}
 </style>
 
 	<script type="text/javascript">
@@ -644,24 +643,31 @@ $(function(){
       $imgs.eq(idx).addClass('active').show();
     }
 
+    function startAuto(){
+      return setInterval(showNext, 5000);
+    }
+
     $prev.on('click',function(e){
       e.stopPropagation();
+      clearInterval(interval);
       $imgs.eq(idx).removeClass('active').hide();
       idx = (idx-1+$imgs.length)%$imgs.length;
       $imgs.eq(idx).addClass('active').show();
+      interval = startAuto();
     });
 
     $next.on('click',function(e){
       e.stopPropagation();
+      clearInterval(interval);
       showNext();
+      interval = startAuto();
     });
 
-    var interval = setInterval(showNext, 5000);
+    var interval = startAuto();
     $c.on('mouseenter',function(){ clearInterval(interval); });
-    $c.on('mouseleave',function(){ interval = setInterval(showNext, 5000); });
+    $c.on('mouseleave',function(){ interval = startAuto(); });
   });
 });
 </script>
 </body>
-
 </html>
