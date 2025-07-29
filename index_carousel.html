@@ -22,13 +22,12 @@
 
 <style>
 .paper{flex-direction:column;align-items:center;}
-.popupphoto.carousel{position:relative;width:100%;margin-top:1em;text-align:center;}
 
-.popupphoto.carousel img{display:none;width:auto;max-width:80%;height:auto;object-fit:contain;margin:0 auto;}
+.popupphoto.carousel{position:relative;width:100%;margin-top:1em;text-align:center;display:flex;flex-direction:column;align-items:center;}
+.popupphoto.carousel img{display:none;width:auto;max-width:70%;height:auto;object-fit:contain;margin:0 auto;}
 .popupphoto.carousel img.active{display:block;}
-.popupphoto.carousel button{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.5);color:#fff;border:none;padding:0.5em;cursor:pointer;}
-.popupphoto.carousel button.prev{left:0.5em;}
-.popupphoto.carousel button.next{right:0.5em;}
+.popupphoto.carousel .controls{margin-top:0.5em;display:flex;justify-content:center;gap:1em;}
+.popupphoto.carousel button{background:#222;color:#fff;border:none;padding:0.5em 1em;border-radius:4px;cursor:pointer;font-size:1.1em;}
 </style>
 
 	<script type="text/javascript">
@@ -633,16 +632,17 @@ $(function(){
     var $imgs = $c.find('img');
     var idx = 0;
     $imgs.hide().eq(0).show().addClass('active');
+    var $controls = $('<div class="controls"></div>');
     var $prev = $('<button class="prev">&#10094;</button>');
     var $next = $('<button class="next">&#10095;</button>');
-    $c.append($prev).append($next);
+    $controls.append($prev).append($next);
+    $c.append($controls);
 
     function showNext(){
       $imgs.eq(idx).removeClass('active').hide();
       idx = (idx+1)%$imgs.length;
       $imgs.eq(idx).addClass('active').show();
     }
-
 
     $prev.on('click',function(e){
       e.stopPropagation();
@@ -659,9 +659,9 @@ $(function(){
     var interval = setInterval(showNext, 5000);
     $c.on('mouseenter',function(){ clearInterval(interval); });
     $c.on('mouseleave',function(){ interval = setInterval(showNext, 5000); });
-
   });
 });
 </script>
 </body>
+
 </html>
