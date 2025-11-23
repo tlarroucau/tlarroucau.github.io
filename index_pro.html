@@ -17,6 +17,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&family=Source+Serif+4:wght@400;500;600;700&display=swap" rel="stylesheet">
 		<link href="images/asu-2.svg" type="text/css" rel="shortcut icon"/>
 		<meta name="author" content="NAnodelabarra."/>
 
@@ -27,6 +30,306 @@
 .popupphoto.carousel img.active{display:block;}
 .popupphoto.carousel .controls{margin-top:0.5em;display:flex;justify-content:center;gap:1em;}
 .popupphoto.carousel button{background:#011F5B;color:#fff;border:none;padding:0.5em 1em;border-radius:4px;cursor:pointer;font-size:1.1em;}
+</style>
+
+<style>
+:root {
+	--pro-bg: #f7f6f3;
+	--pro-nav: #0f1b2c;
+	--pro-accent: #9c7c3b;
+	--pro-accent-soft: #d0b480;
+	--pro-panel: #ffffff;
+	--pro-text: #1f2a38;
+	--pro-muted: #4c5869;
+}
+
+html, body {
+	background: var(--pro-bg);
+	font-family: 'Work Sans', 'Roboto', 'Lato', sans-serif;
+	color: var(--pro-text);
+}
+
+body.is-preload:before {
+	background: var(--pro-bg);
+}
+
+#header {
+	background: var(--pro-panel);
+	border-right: 1px solid rgba(15, 27, 44, 0.08);
+	box-shadow: 18px 0 38px rgba(15, 27, 44, 0.08);
+	padding: 3.25rem 2.75rem 3.5rem;
+}
+
+#header header {
+	text-align: left;
+}
+
+#header .image.avatar img {
+	border-radius: 12px;
+	border: 1px solid rgba(15, 27, 44, 0.08);
+}
+
+#header h1 a {
+	font-family: 'Source Serif 4', serif;
+	font-size: 2rem;
+	color: var(--pro-nav);
+	letter-spacing: 0.04em;
+}
+
+#header #nav ul {
+	display: grid;
+	gap: 0.6rem;
+	margin-top: 2rem;
+}
+
+#header #nav ul li a {
+	padding: 0.7rem 0.6rem;
+	color: var(--pro-muted);
+	font-weight: 500;
+	border-left: 3px solid transparent;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	transition: all 0.2s ease-out;
+	background: transparent;
+}
+
+#header #nav ul li a:hover,
+#header #nav ul li a.active {
+	color: var(--pro-nav);
+	border-left-color: var(--pro-accent);
+	background: rgba(156, 124, 59, 0.08);
+}
+
+#header footer {
+	border-top: 1px solid rgba(15, 27, 44, 0.06);
+	margin-top: 2.5rem;
+	padding-top: 2rem;
+}
+
+#header footer .icons li a {
+	color: var(--pro-muted);
+}
+
+#header footer .icons li a:hover {
+	color: var(--pro-accent);
+}
+
+#wrapper {
+	background: transparent;
+}
+
+.image.main {
+	border-radius: 18px;
+	box-shadow: 0 40px 55px rgba(15, 27, 44, 0.18);
+	border: 1px solid rgba(15, 27, 44, 0.08);
+}
+
+#main {
+	background: var(--pro-panel);
+	border: 1px solid rgba(15, 27, 44, 0.06);
+	box-shadow: 0 25px 70px rgba(15, 27, 44, 0.12);
+	border-radius: 28px;
+	padding: 3.5rem 4rem;
+	margin: 2.5rem;
+}
+
+section {
+	padding: 2.75rem;
+	margin-bottom: 2.5rem;
+	border-radius: 22px;
+	background: rgba(255, 255, 255, 0.92);
+	border: 1px solid rgba(15, 27, 44, 0.08);
+	box-shadow: 0 22px 48px rgba(15, 27, 44, 0.12);
+}
+
+section:last-of-type {
+	margin-bottom: 0;
+}
+
+.container {
+	background: transparent;
+}
+
+header.major h2,
+header.minor h3 {
+	font-family: 'Source Serif 4', serif;
+	letter-spacing: 0.08em;
+	font-weight: 600;
+	color: var(--pro-nav);
+	text-transform: uppercase;
+	margin-bottom: 1.75rem;
+}
+
+header.major:after,
+header.minor:after {
+	content: '';
+	display: block;
+	width: 120px;
+	height: 2px;
+	background: linear-gradient(90deg, var(--pro-accent), transparent);
+	margin-top: 0.75rem;
+}
+
+p,
+li,
+blockquote {
+	color: var(--pro-muted) !important;
+	font-size: 1.05rem;
+	line-height: 1.75;
+}
+
+blockquote {
+	border-left: 4px solid var(--pro-accent);
+	background: rgba(15, 27, 44, 0.05);
+	padding: 1.5rem 2rem;
+	margin: 1.5rem 0;
+}
+
+blockquote a {
+	color: var(--pro-nav);
+	text-decoration: none;
+	font-weight: 600;
+}
+
+blockquote a:hover {
+	color: var(--pro-accent);
+}
+
+.popup-inner,
+.ccc {
+	background: #ffffff !important;
+	border-radius: 18px;
+	box-shadow: 0 20px 55px rgba(15, 27, 44, 0.18);
+	border: 1px solid rgba(15, 27, 44, 0.08);
+}
+
+.see.title,
+a.see.title {
+	border-radius: 8px;
+	background: var(--pro-nav);
+	color: #ffffff !important;
+	padding: 0.55rem 1.25rem;
+	font-size: 0.92rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	transition: background 0.2s ease-out;
+}
+
+.see.title:hover {
+	background: var(--pro-accent);
+	color: #ffffff !important;
+}
+
+.popupphoto.carousel button {
+	background: var(--pro-nav);
+	color: #ffffff;
+	border-radius: 6px;
+	padding: 0.45rem 0.95rem;
+	border: none;
+}
+
+.popupphoto.carousel button:hover {
+	background: var(--pro-accent);
+}
+
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+	width: 100%;
+	background: #ffffff;
+	border: 1px solid rgba(15, 27, 44, 0.08);
+	border-radius: 14px;
+	overflow: hidden;
+	box-shadow: 0 20px 45px rgba(15, 27, 44, 0.12);
+}
+
+table th {
+	background: rgba(15, 27, 44, 0.92);
+	color: #ffffff;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+table th,
+table td {
+	padding: 1rem 1.5rem;
+	border-bottom: 1px solid rgba(15, 27, 44, 0.08);
+}
+
+table tr:last-child td {
+	border-bottom: none;
+}
+
+a {
+	color: var(--pro-nav);
+}
+
+a:hover {
+	color: var(--pro-accent);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: var(--pro-nav) !important;
+}
+
+.popuptext p {
+	font-size: 1rem !important;
+	line-height: 1.75 !important;
+	color: var(--pro-muted) !important;
+}
+
+.popuptext a {
+	background: var(--pro-nav) !important;
+	color: #ffffff !important;
+	padding: 0.6rem 1.25rem !important;
+	border-radius: 8px !important;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	font-weight: 600;
+	box-shadow: 0 10px 24px rgba(15, 27, 44, 0.2);
+}
+
+.popuptext a:hover {
+	background: var(--pro-accent) !important;
+	color: #ffffff !important;
+}
+
+.closepopup {
+	background: var(--pro-nav) !important;
+	color: #ffffff !important;
+	box-shadow: 0 15px 30px rgba(15, 27, 44, 0.18);
+}
+
+.closepopup:hover {
+	background: var(--pro-accent) !important;
+}
+
+table th {
+	background: rgba(15, 27, 44, 0.92) !important;
+	color: #ffffff !important;
+}
+
+table td {
+	color: var(--pro-muted) !important;
+}
+
+.popup-inner,
+.ccc,
+.popuptext {
+	color: var(--pro-muted) !important;
+}
+
+@media screen and (max-width: 980px) {
+	#main {
+		margin: 1.5rem 1rem;
+		padding: 2.5rem 1.75rem;
+	}
+
+	section {
+		padding: 2.25rem 0;
+	}
+}
 </style>
 
 	<script type="text/javascript">
@@ -130,10 +433,10 @@
 			</header>
 <blockquote>
     <a href="#popup22">Dynamic College Admissions</a>, with I. Ríos.
-    <a href="JMP_Larroucau.pdf" style="color: black; font-weight: normal; text-decoration: none;">[See paper]</a>
+    <a href="JMP_Larroucau.pdf" style="color: black; font-weight: normal; text-decoration: none;">[See paper (new draft!)]</a>
     <a href="JMP_electronic_companion_Larroucau.pdf" style="color: black; font-weight: normal; text-decoration: none;">[See electronic companion]</a>
     <br>
-    <span style="font-style: normal; color: black;">Reject and Resubmit (New Draft!),</span> <b style="font-style: italic; color: black;">Econometrica</b>.
+    <span style="font-style: normal; color: black;">Reject and Resubmit (resubmitted!),</span> <b style="font-style: italic; color: black;">Econometrica</b>.
 
 </blockquote>
 
@@ -213,8 +516,9 @@
 				cardinal preferences and leverage dynamic incentives can significantly increase retention and students' overall welfare.
 
 
+
 				</p>
-				<a href="JMP_Larroucau.pdf" class="see title" >See paper</a>
+				<a href="JMP_Larroucau.pdf" class="see title" >See paper (new draft!)</a>
 				<a href="JMP_electronic_companion_Larroucau.pdf" class="see title">See electronic companion</a>
 			</div><div class="popupphoto carousel">
 				<img src="images/Dynamic College Admissions_picture.png" alt="">
