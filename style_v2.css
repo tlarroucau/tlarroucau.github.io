@@ -1,16 +1,16 @@
 :root {
-    --bg-color: #f0f2f5;
-    --sidebar-bg: #ffffff;
-    --text-color: #2d3748;
-    --text-muted: #718096;
-    --accent-color: #3182ce;
-    --card-bg: #ffffff;
-    --card-hover: #f7fafc;
+    --bg-color: #1a202c;
+    --sidebar-bg: #2d3748;
+    --text-color: #e2e8f0;
+    --text-muted: #a0aec0;
+    --accent-color: #63b3ed;
+    --card-bg: #2d3748;
+    --card-hover: #4a5568;
     --font-main: 'Inter', sans-serif;
     --font-heading: 'Libre Baskerville', serif;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.4);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.3), 0 2px 4px -1px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.3), 0 4px 6px -2px rgba(0,0,0,0.1);
 }
 
 * {
@@ -42,7 +42,7 @@ body {
     text-align: center;
     box-shadow: 2px 0 10px rgba(0,0,0,0.05);
     z-index: 100;
-    border-right: 1px solid #e2e8f0;
+    border-right: 1px solid #4a5568;
 }
 
 #sidebar .avatar {
@@ -51,7 +51,7 @@ body {
     margin-bottom: 1.5rem;
     border-radius: 8px; /* Rectangular with slight rounding */
     overflow: hidden;
-    border: 3px solid #fff;
+    border: 3px solid var(--sidebar-bg);
     box-shadow: var(--shadow-md);
 }
 
@@ -95,7 +95,7 @@ body {
 
 #sidebar nav ul li a:hover,
 #sidebar nav ul li a.active {
-    background-color: #ebf8ff;
+    background-color: #2c5282;
     color: var(--accent-color);
     transform: translateX(5px);
 }
@@ -175,7 +175,7 @@ p {
     padding: 2rem;
     border-radius: 12px;
     margin-bottom: 1.5rem;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #4a5568;
     box-shadow: var(--shadow-sm);
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
     position: relative;
@@ -224,7 +224,7 @@ p {
 
 /* Journal Names */
 .card blockquote b i {
-    color: #000;
+    color: var(--text-color);
 }
 
 /* Carousel */
@@ -234,12 +234,12 @@ p {
     overflow: hidden;
     border-radius: 8px;
     box-shadow: var(--shadow-md);
-    background: #f7fafc;
+    background: var(--card-bg);
     min-height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #4a5568;
 }
 
 .carousel-slide {
@@ -264,7 +264,7 @@ p {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255,255,255,0.8);
+    background: rgba(45, 55, 72, 0.8);
     color: var(--text-color);
     border: none;
     padding: 1rem;
@@ -282,7 +282,7 @@ p {
 }
 
 .carousel-btn:hover {
-    background: #fff;
+    background: #4a5568;
     box-shadow: var(--shadow-md);
 }
 
@@ -306,7 +306,7 @@ p {
 }
 
 .modal-content {
-    background-color: #fff;
+    background-color: var(--card-bg);
     padding: 3rem;
     border-radius: 16px;
     max-width: 800px;
@@ -363,7 +363,7 @@ p {
     position: relative;
     padding-left: 2rem;
     margin-bottom: 2rem;
-    border-left: 2px solid #e2e8f0;
+    border-left: 2px solid #4a5568;
 }
 
 .timeline-item::before {
@@ -375,7 +375,7 @@ p {
     height: 10px;
     background: var(--accent-color);
     border-radius: 50%;
-    border: 2px solid #fff;
+    border: 2px solid var(--card-bg);
     box-shadow: 0 0 0 2px var(--accent-color);
 }
 
@@ -419,14 +419,14 @@ p {
     justify-content: space-between;
     align-items: center;
     padding: 0.75rem 1rem;
-    background: #fff;
-    border: 1px solid #e2e8f0;
+    background: var(--card-bg);
+    border: 1px solid #4a5568;
     border-radius: 6px;
     transition: background 0.2s;
 }
 
 .repo-item:hover {
-    background: #f7fafc;
+    background: var(--card-hover);
 }
 
 .repo-item a {
@@ -442,30 +442,31 @@ p {
 .repo-stats {
     font-size: 0.85rem;
     color: var(--text-muted);
-    background: #edf2f7;
+    background: #4a5568;
     padding: 0.2rem 0.6rem;
     border-radius: 12px;
 }
 
 .contribution-graph {
-    background: #fff;
+    background: var(--card-bg);
     padding: 1rem;
     border-radius: 8px;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #4a5568;
     overflow-x: auto;
 }
 
 .contribution-graph img {
     width: 100%;
     min-width: 600px;
+    filter: invert(1) hue-rotate(180deg);
 }
 
 .calendar {
-    background: #fff;
+    background: var(--card-bg);
     padding: 1.5rem;
     border-radius: 12px;
     box-shadow: var(--shadow-sm);
-    border: 1px solid #e2e8f0;
+    border: 1px solid #4a5568;
     overflow-x: auto;
 }
 
@@ -481,7 +482,7 @@ p {
         position: relative;
         padding: 1rem;
         border-right: none;
-        border-bottom: 1px solid #e2e8f0;
+        border-bottom: 1px solid #4a5568;
     }
     
     #main {
