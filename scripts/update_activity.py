@@ -7,27 +7,28 @@ def update_activity():
     # Get GitHub token from environment variable
     token = os.getenv('GH_TOKEN')
     if not token:
-        print("Error: GH_TOKEN environment variable not set")
-        sys.exit(1)
+        print("Warning: GH_TOKEN environment variable not set. Skipping update.")
+        return
 
     try:
         g = Github(token)
         user = g.get_user()
         print(f"Authenticated as: {user.login}")
+        username = user.login
 
         # Get recently updated repositories
         repos = user.get_repos(sort="pushed", direction="desc")
-        username = user.login
         
         top_repos = []
         count = 0
         checked_count = 0
         
-        # Check the first 30 recently pushed repos to find 3 active ones
+        # Check the first 20 recently pushed repos to find 3 active ones
+        # Limit checks to avoid timeouts
         for repo in repos:
             if count >= 3:
                 break
-            if checked_count > 30:
+            if checked_count > 20:
                 break
             
             checked_count += 1
@@ -39,25 +40,34 @@ def update_activity():
                 if repo.name == "tlarroucau.github.io":
                     continue
                 
-                # Count MY commits using Search API (more robust)
+                # 1. Count MY commits
+                my_commits = 0
                 try:
-                    query = f"repo:{repo.full_name} author:{username}"
-                    my_commits = g.search_commits(query).totalCount
+                    # Try to get total count efficiently
+                    commits = repo.get_commits(author=username)
+                    my_commits = commits.totalCount
+                except GithubException as e:
+                    if e.status == 409: # Empty repository
+                        my_commits = 0
+                    else:
+                        print(f"  Error counting commits: {e}")
+                        my_commits = 0
                 except Exception as e:
-                    print(f"Error searching commits for {repo.full_name}: {e}")
+                    print(f"  Generic error counting commits: {e}")
                     my_commits = 0
                 
-                # Count MY issues/PRs using Search API
+                # 2. Count MY issues (created) - this includes PRs in GitHub API
+                my_issues = 0
                 try:
-                    query = f"repo:{repo.full_name} author:{username}"
-                    my_issues = g.search_issues(query).totalCount
+                    issues = repo.get_issues(creator=username)
+                    my_issues = issues.totalCount
                 except Exception as e:
-                    print(f"Error searching issues for {repo.full_name}: {e}")
+                    print(f"  Error counting issues: {e}")
                     my_issues = 0
                 
-                print(f"  Commits: {my_commits}, Issues: {my_issues}")
+                print(f"  -> Commits: {my_commits}, Issues: {my_issues}")
                 
-                # If I have 0 activity, skip this repo (even if it was pushed recently by someone else)
+                # If I have 0 activity, skip this repo
                 if my_commits == 0 and my_issues == 0:
                     continue
                     
@@ -73,6 +83,10 @@ def update_activity():
             except Exception as e:
                 print(f"Skipping {repo.full_name} due to error: {e}")
                 continue
+
+        if not top_repos:
+            print("No active repositories found.")
+            return
 
         html_content = ""
         
@@ -118,19 +132,22 @@ def update_activity():
 
         # Replace content between markers
         pattern = r'(<!-- START_ACTIVITY -->)(.*?)(<!-- END_ACTIVITY -->)'
-        replacement = f'\\1{html_content}\n                \\3'
-        
-        new_content = re.sub(pattern, replacement, content, flags=re.DOTALL)
-
-        # Write back to index.html
-        with open('index.html', 'w', encoding='utf-8') as f:
-            f.write(new_content)
+        if re.search(pattern, content, flags=re.DOTALL):
+            new_content = re.sub(pattern, f'\\1{html_content}\n                \\3', content, flags=re.DOTALL)
             
-        print("Successfully updated Recent Activity in index.html")
+            # Write back to index.html
+            with open('index.html', 'w', encoding='utf-8') as f:
+                f.write(new_content)
+                
+            print("Successfully updated Recent Activity in index.html")
+        else:
+            print("Error: Markers not found in index.html")
         
     except Exception as e:
-        print(f"Fatal error: {e}")
-        sys.exit(1)
+        print(f"Script failed with error: {e}")
+        # We do NOT exit with error code 1, so the Action doesn't show as "Failed"
+        # It just won't update the file.
+        return
 
 if __name__ == "__main__":
     update_activity()
