@@ -468,6 +468,11 @@ p {
     background: var(--card-hover);
 }
 
+.repo-item > div {
+    display: flex;
+    align-items: center;
+}
+
 .repo-item a {
     color: var(--accent-color);
     text-decoration: none;
@@ -484,6 +489,28 @@ p {
     background: #4a5568;
     padding: 0.2rem 0.6rem;
     border-radius: 12px;
+}
+
+.repo-tag {
+    font-size: 0.7rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    margin-left: 0.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: 1px solid;
+}
+
+.repo-tag.public {
+    color: #68d391;
+    border-color: rgba(104, 211, 145, 0.3);
+    background-color: rgba(104, 211, 145, 0.05);
+}
+
+.repo-tag.private {
+    color: #fc8181;
+    border-color: rgba(252, 129, 129, 0.3);
+    background-color: rgba(252, 129, 129, 0.05);
 }
 
 /* Tags */
@@ -522,20 +549,6 @@ p {
 .tag-info { color: #63b3ed; border-color: rgba(99, 179, 237, 0.3); background-color: rgba(99, 179, 237, 0.05); }
 .tag-evolution { color: #68d391; border-color: rgba(104, 211, 145, 0.3); background-color: rgba(104, 211, 145, 0.05); }
 .tag-implementation { color: #a0aec0; border-color: rgba(160, 174, 192, 0.3); background-color: rgba(160, 174, 192, 0.05); }
-
-.contribution-graph {
-    background: var(--card-bg);
-    padding: 1rem;
-    border-radius: 8px;
-    border: 1px solid #4a5568;
-    overflow-x: auto;
-}
-
-.contribution-graph img {
-    width: 100%;
-    min-width: 600px;
-    filter: invert(1) hue-rotate(180deg);
-}
 
 .calendar {
     background: var(--card-bg);
