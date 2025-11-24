@@ -13,8 +13,8 @@ def update_activity():
     user = g.get_user()
 
     # Get recently updated repositories
-    # We fetch a few more than 3 to filter out forks if desired, or just take the top ones
     repos = user.get_repos(sort="pushed", direction="desc")
+    username = user.login
     
     top_repos = []
     count = 0
@@ -26,31 +26,42 @@ def update_activity():
         if repo.name == "tlarroucau.github.io":
             continue
             
-        # Skip forks
-        if repo.fork:
-            continue
-
-        # Optional: Only show repos owned by the user (skip organization repos)
-        if repo.owner.login != user.login:
-            continue
+        # We allow forks and non-owned repos now, but we check for actual contribution
         
-        top_repos.append(repo)
-        count += 1
+        try:
+            # Count MY commits
+            # Note: This might be slow for very large repos, but necessary for accuracy
+            my_commits = repo.get_commits(author=username).totalCount
+            
+            # Count MY issues (created) - this includes PRs in GitHub API
+            my_issues = repo.get_issues(creator=username).totalCount
+            
+            # If I have 0 activity, skip this repo (even if it was pushed recently by someone else)
+            if my_commits == 0 and my_issues == 0:
+                continue
+                
+            repo_data = {
+                'repo': repo,
+                'commits': my_commits,
+                'issues': my_issues
+            }
+            
+            top_repos.append(repo_data)
+            count += 1
+            
+        except Exception as e:
+            print(f"Skipping {repo.full_name} due to error: {e}")
+            continue
 
     html_content = ""
     
-    for repo in top_repos:
+    for item in top_repos:
+        repo = item['repo']
         name = repo.full_name
         is_private = repo.private
+        commits = item['commits']
+        issues = item['issues']
         
-        # Get commit count (this can be slow for large repos, so we might want to limit or cache)
-        # For a personal portfolio, getting total count is usually fine.
-        # Note: get_commits().totalCount is efficient in PyGithub (uses header info)
-        try:
-            commit_count = repo.get_commits().totalCount
-        except:
-            commit_count = 0
-            
         # Determine visibility tag and link
         if is_private:
             visibility_class = "private"
@@ -63,13 +74,21 @@ def update_activity():
             # Public repos get a link
             name_html = f'<a href="{repo.html_url}" target="_blank">{name}</a>'
 
+        stats_text = []
+        if commits > 0:
+            stats_text.append(f"{commits} commits")
+        if issues > 0:
+            stats_text.append(f"{issues} issues/PRs")
+        
+        stats_html = ", ".join(stats_text)
+
         html_content += f"""
                 <div class="repo-item">
                     <div>
                         {name_html}
                         <span class="repo-tag {visibility_class}">{visibility_text}</span>
                     </div>
-                    <span class="repo-stats">{commit_count} commits</span>
+                    <span class="repo-stats">{stats_html}</span>
                 </div>"""
 
     # Read index.html
