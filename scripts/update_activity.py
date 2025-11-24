@@ -39,21 +39,20 @@ def update_activity():
                 if repo.name == "tlarroucau.github.io":
                     continue
                 
-                # Count MY commits
+                # Count MY commits using Search API (more robust)
                 try:
-                    my_commits = repo.get_commits(author=username).totalCount
-                except GithubException as e:
-                    if e.status == 409: # Empty repository
-                        my_commits = 0
-                    else:
-                        print(f"Error getting commits for {repo.full_name}: {e}")
-                        my_commits = 0
+                    query = f"repo:{repo.full_name} author:{username}"
+                    my_commits = g.search_commits(query).totalCount
+                except Exception as e:
+                    print(f"Error searching commits for {repo.full_name}: {e}")
+                    my_commits = 0
                 
-                # Count MY issues (created) - this includes PRs in GitHub API
+                # Count MY issues/PRs using Search API
                 try:
-                    my_issues = repo.get_issues(creator=username).totalCount
-                except GithubException as e:
-                    print(f"Error getting issues for {repo.full_name}: {e}")
+                    query = f"repo:{repo.full_name} author:{username}"
+                    my_issues = g.search_issues(query).totalCount
+                except Exception as e:
+                    print(f"Error searching issues for {repo.full_name}: {e}")
                     my_issues = 0
                 
                 print(f"  Commits: {my_commits}, Issues: {my_issues}")
