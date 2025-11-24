@@ -179,6 +179,44 @@ p {
     box-shadow: var(--shadow-sm);
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.card-content {
+    flex: 1;
+}
+
+.card-image {
+    flex: 0 0 150px;
+    height: 100px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #4a5568;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 600px) {
+    .card {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
+    .card-image {
+        width: 100%;
+        height: 150px;
+        flex: none;
+    }
 }
 
 .card:hover {
@@ -447,6 +485,43 @@ p {
     padding: 0.2rem 0.6rem;
     border-radius: 12px;
 }
+
+/* Tags */
+.tags-container {
+    display: flex;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tag {
+    font-size: 0.6rem;
+    font-weight: 600;
+    padding: 0.1rem 0.5rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background-color: transparent;
+    border: 1px solid;
+    opacity: 0.8;
+}
+
+.tag-structural { color: #d6bcfa; border-color: rgba(214, 188, 250, 0.3); background-color: rgba(214, 188, 250, 0.05); }
+.tag-surveys { color: #81e6d9; border-color: rgba(129, 230, 217, 0.3); background-color: rgba(129, 230, 217, 0.05); }
+.tag-rct { color: #68d391; border-color: rgba(104, 211, 145, 0.3); background-color: rgba(104, 211, 145, 0.05); }
+.tag-quasi { color: #f6ad55; border-color: rgba(246, 173, 85, 0.3); background-color: rgba(246, 173, 85, 0.05); }
+.tag-market-design { color: #63b3ed; border-color: rgba(99, 179, 237, 0.3); background-color: rgba(99, 179, 237, 0.05); }
+.tag-policy { color: #fc8181; border-color: rgba(252, 129, 129, 0.3); background-color: rgba(252, 129, 129, 0.05); }
+.tag-data { color: #f6e05e; border-color: rgba(246, 224, 94, 0.3); background-color: rgba(246, 224, 94, 0.05); }
+.tag-ai { color: #f687b3; border-color: rgba(246, 135, 179, 0.3); background-color: rgba(246, 135, 179, 0.05); }
+
+.tag-education { color: #4fd1c5; border-color: rgba(79, 209, 197, 0.3); background-color: rgba(79, 209, 197, 0.05); }
+.tag-health { color: #f687b3; border-color: rgba(246, 135, 179, 0.3); background-color: rgba(246, 135, 179, 0.05); }
+.tag-labor { color: #f6ad55; border-color: rgba(246, 173, 85, 0.3); background-color: rgba(246, 173, 85, 0.05); }
+.tag-theory { color: #9f7aea; border-color: rgba(159, 122, 234, 0.3); background-color: rgba(159, 122, 234, 0.05); }
+.tag-info { color: #63b3ed; border-color: rgba(99, 179, 237, 0.3); background-color: rgba(99, 179, 237, 0.05); }
+.tag-evolution { color: #68d391; border-color: rgba(104, 211, 145, 0.3); background-color: rgba(104, 211, 145, 0.05); }
+.tag-implementation { color: #a0aec0; border-color: rgba(160, 174, 192, 0.3); background-color: rgba(160, 174, 192, 0.05); }
 
 .contribution-graph {
     background: var(--card-bg);
