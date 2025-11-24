@@ -168,8 +168,16 @@ def update_activity():
 
         # Replace content between markers
         pattern = r'(<!-- START_ACTIVITY -->)(.*?)(<!-- END_ACTIVITY -->)'
-        if re.search(pattern, content, flags=re.DOTALL):
-            new_content = re.sub(pattern, f'\\1{html_content}\n                \\3', content, flags=re.DOTALL)
+        match = re.search(pattern, content, flags=re.DOTALL)
+        if match:
+            start_marker = match.group(1)
+            end_marker = match.group(3)
+            new_section = f"{start_marker}{html_content}\n                {end_marker}"
+            
+            # Use string slicing instead of re.sub to avoid backslash escaping issues
+            start_idx = match.start()
+            end_idx = match.end()
+            new_content = content[:start_idx] + new_section + content[end_idx:]
             
             # Write back to index.html
             with open('index.html', 'w', encoding='utf-8') as f:
@@ -180,10 +188,17 @@ def update_activity():
             print("Error: Markers not found in index.html")
         
     except Exception as e:
+        import traceback
+        traceback.print_exc()
         print(f"Script failed with error: {e}")
         # We do NOT exit with error code 1, so the Action doesn't show as "Failed"
         # It just won't update the file.
         return
 
 if __name__ == "__main__":
-    update_activity()
+    try:
+        update_activity()
+    except Exception:
+        import traceback
+        traceback.print_exc()
+        sys.exit(1) # Exit with error if it crashes at top level
