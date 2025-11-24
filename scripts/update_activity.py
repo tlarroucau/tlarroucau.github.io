@@ -21,8 +21,18 @@ def update_activity():
     for repo in repos:
         if count >= 3:
             break
-        # Optional: Skip forks if you only want original work
-        # if repo.fork: continue
+        
+        # Skip the portfolio repository itself
+        if repo.name == "tlarroucau.github.io":
+            continue
+            
+        # Skip forks
+        if repo.fork:
+            continue
+
+        # Optional: Only show repos owned by the user (skip organization repos)
+        if repo.owner.login != user.login:
+            continue
         
         top_repos.append(repo)
         count += 1
