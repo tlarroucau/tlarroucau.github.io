@@ -13,6 +13,22 @@
     --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.3), 0 2px 4px -1px rgba(0,0,0,0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.3), 0 4px 6px -2px rgba(0,0,0,0.1);
     --border-color: #4a5568;
+    
+    /* Navigation & Links (Dark) */
+    --nav-active-bg: #2c5282;
+    --link-hover-color: #2c5282;
+    
+    /* Repo Tag Colors (Dark) */
+    --repo-tag-public-rgb: 104, 211, 145;
+    --repo-tag-private-rgb: 252, 129, 129;
+    --repo-stats-bg: #4a5568;
+    
+    /* Carousel (Dark) */
+    --carousel-btn-bg: rgba(45, 55, 72, 0.8);
+    --carousel-btn-hover-bg: #4a5568;
+    
+    /* Journal Title (Dark) */
+    --journal-title-color: #ffffff;
 
     /* Tag Colors (Dark) */
     --tag-structural: #d6bcfa;
@@ -49,6 +65,22 @@
     --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
     --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
     --border-color: #e2e8f0;
+
+    /* Navigation & Links (Light) */
+    --nav-active-bg: #ebf8ff;
+    --link-hover-color: #2b6cb0;
+
+    /* Repo Tag Colors (Light) */
+    --repo-tag-public-rgb: 47, 133, 90;
+    --repo-tag-private-rgb: 229, 62, 62;
+    --repo-stats-bg: #edf2f7;
+
+    /* Carousel (Light) */
+    --carousel-btn-bg: rgba(255, 255, 255, 0.8);
+    --carousel-btn-hover-bg: #edf2f7;
+
+    /* Journal Title (Light) */
+    --journal-title-color: #1a202c;
 
     /* Tag Colors (Light) */
     --tag-structural: #805ad5;
@@ -153,7 +185,7 @@ body {
 
 #sidebar nav ul li a:hover,
 #sidebar nav ul li a.active {
-    background-color: #2c5282;
+    background-color: var(--nav-active-bg);
     color: var(--accent-color);
     transform: translateX(5px);
 }
@@ -298,7 +330,7 @@ p {
 
 .card a:hover {
     text-decoration: underline;
-    color: #2c5282;
+    color: var(--link-hover-color);
 }
 
 /* Title Link */
@@ -321,7 +353,7 @@ p {
 
 /* Journal Names */
 .card blockquote b i {
-    color: #ffffff;
+    color: var(--journal-title-color);
 }
 
 /* Carousel */
@@ -361,7 +393,7 @@ p {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(45, 55, 72, 0.8);
+    background: var(--carousel-btn-bg);
     color: var(--text-color);
     border: none;
     padding: 1rem;
@@ -379,7 +411,7 @@ p {
 }
 
 .carousel-btn:hover {
-    background: #4a5568;
+    background: var(--carousel-btn-hover-bg);
     box-shadow: var(--shadow-md);
 }
 
@@ -544,7 +576,7 @@ p {
 .repo-stats {
     font-size: 0.85rem;
     color: var(--text-muted);
-    background: #4a5568;
+    background: var(--repo-stats-bg);
     padding: 0.2rem 0.6rem;
     border-radius: 12px;
 }
@@ -560,15 +592,15 @@ p {
 }
 
 .repo-tag.public {
-    color: #68d391;
-    border-color: rgba(104, 211, 145, 0.3);
-    background-color: rgba(104, 211, 145, 0.05);
+    color: rgb(var(--repo-tag-public-rgb));
+    border-color: rgba(var(--repo-tag-public-rgb), 0.3);
+    background-color: rgba(var(--repo-tag-public-rgb), 0.05);
 }
 
 .repo-tag.private {
-    color: #fc8181;
-    border-color: rgba(252, 129, 129, 0.3);
-    background-color: rgba(252, 129, 129, 0.05);
+    color: rgb(var(--repo-tag-private-rgb));
+    border-color: rgba(var(--repo-tag-private-rgb), 0.3);
+    background-color: rgba(var(--repo-tag-private-rgb), 0.05);
 }
 
 /* Tags */
