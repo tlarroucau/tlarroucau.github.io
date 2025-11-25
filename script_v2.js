@@ -6,10 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Check for saved user preference, if any, on load of the website
     const savedTheme = localStorage.getItem('theme');
-    const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
     
-    // If saved theme is light, OR if no saved theme but system prefers light, apply it
-    if (savedTheme === 'light' || (!savedTheme && systemPrefersLight)) {
+    // If saved theme is light, apply it
+    if (savedTheme === 'light') {
         htmlElement.setAttribute('data-theme', 'light');
         themeIcon.classList.remove('fa-moon');
         themeIcon.classList.add('fa-sun');
