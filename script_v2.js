@@ -1,4 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Theme Toggle Logic
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = themeToggleBtn.querySelector('i');
+    const htmlElement = document.documentElement;
+
+    // Check for saved user preference, if any, on load of the website
+    const savedTheme = localStorage.getItem('theme');
+    
+    // If saved theme is light, apply it
+    if (savedTheme === 'light') {
+        htmlElement.setAttribute('data-theme', 'light');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+        // Add rotation animation class
+        themeToggleBtn.classList.add('rotate');
+        
+        // Remove animation class after transition ends
+        setTimeout(() => {
+            themeToggleBtn.classList.remove('rotate');
+        }, 500);
+
+        if (htmlElement.getAttribute('data-theme') === 'light') {
+            // Switch to Dark
+            htmlElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'dark');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        } else {
+            // Switch to Light
+            htmlElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+    });
+
     // Scroll Animation (Intersection Observer)
     const observerOptions = {
         threshold: 0.1,

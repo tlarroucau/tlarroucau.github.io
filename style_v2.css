@@ -1,4 +1,5 @@
 :root {
+    /* Default Dark Theme */
     --bg-color: #1a202c;
     --sidebar-bg: #2d3748;
     --text-color: #e2e8f0;
@@ -11,6 +12,60 @@
     --shadow-sm: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.4);
     --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.3), 0 2px 4px -1px rgba(0,0,0,0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.3), 0 4px 6px -2px rgba(0,0,0,0.1);
+    --border-color: #4a5568;
+
+    /* Tag Colors (Dark) */
+    --tag-structural: #d6bcfa;
+    --tag-surveys: #81e6d9;
+    --tag-rct: #68d391;
+    --tag-quasi: #f6ad55;
+    --tag-market-design: #63b3ed;
+    --tag-policy: #fc8181;
+    --tag-data: #f6e05e;
+    --tag-ai: #f687b3;
+    --tag-education: #4fd1c5;
+    --tag-health: #f687b3;
+    --tag-labor: #f6ad55;
+    --tag-theory: #9f7aea;
+    --tag-info: #63b3ed;
+    --tag-evolution: #68d391;
+    --tag-implementation: #a0aec0;
+    
+    /* Tag Borders/Backgrounds (Dark) */
+    --tag-bg-opacity: 0.05;
+    --tag-border-opacity: 0.3;
+}
+
+[data-theme="light"] {
+    /* Light Theme Overrides */
+    --bg-color: #f7fafc;
+    --sidebar-bg: #ffffff;
+    --text-color: #2d3748;
+    --text-muted: #718096;
+    --accent-color: #3182ce;
+    --card-bg: #ffffff;
+    --card-hover: #edf2f7;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+    --border-color: #e2e8f0;
+
+    /* Tag Colors (Light) */
+    --tag-structural: #805ad5;
+    --tag-surveys: #319795;
+    --tag-rct: #2f855a;
+    --tag-quasi: #dd6b20;
+    --tag-market-design: #3182ce;
+    --tag-policy: #e53e3e;
+    --tag-data: #d69e2e;
+    --tag-ai: #d53f8c;
+    --tag-education: #319795;
+    --tag-health: #d53f8c;
+    --tag-labor: #dd6b20;
+    --tag-theory: #805ad5;
+    --tag-info: #3182ce;
+    --tag-evolution: #2f855a;
+    --tag-implementation: #718096;
 }
 
 * {
@@ -26,6 +81,7 @@ body {
     display: flex;
     min-height: 100vh;
     line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Sidebar */
@@ -42,7 +98,8 @@ body {
     text-align: center;
     box-shadow: 2px 0 10px rgba(0,0,0,0.05);
     z-index: 100;
-    border-right: 1px solid #4a5568;
+    border-right: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 #sidebar .avatar {
@@ -53,6 +110,7 @@ body {
     overflow: hidden;
     border: 3px solid var(--sidebar-bg);
     box-shadow: var(--shadow-md);
+    transition: border-color 0.3s ease;
 }
 
 #sidebar .avatar img {
@@ -175,7 +233,7 @@ p {
     padding: 2rem;
     border-radius: 12px;
     margin-bottom: 1.5rem;
-    border: 1px solid #4a5568;
+    border: 1px solid var(--border-color);
     box-shadow: var(--shadow-sm);
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
     position: relative;
@@ -194,7 +252,7 @@ p {
     height: 100px;
     border-radius: 8px;
     overflow: hidden;
-    border: 1px solid #4a5568;
+    border: 1px solid var(--border-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -278,7 +336,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #4a5568;
+    border: 1px solid var(--border-color);
 }
 
 .carousel-slide {
@@ -402,7 +460,7 @@ p {
     position: relative;
     padding-left: 2rem;
     margin-bottom: 2rem;
-    border-left: 2px solid #4a5568;
+    border-left: 2px solid var(--border-color);
 }
 
 .timeline-item::before {
@@ -459,7 +517,7 @@ p {
     align-items: center;
     padding: 0.75rem 1rem;
     background: var(--card-bg);
-    border: 1px solid #4a5568;
+    border: 1px solid var(--border-color);
     border-radius: 6px;
     transition: background 0.2s;
 }
@@ -533,30 +591,147 @@ p {
     opacity: 0.8;
 }
 
-.tag-structural { color: #d6bcfa; border-color: rgba(214, 188, 250, 0.3); background-color: rgba(214, 188, 250, 0.05); }
-.tag-surveys { color: #81e6d9; border-color: rgba(129, 230, 217, 0.3); background-color: rgba(129, 230, 217, 0.05); }
-.tag-rct { color: #68d391; border-color: rgba(104, 211, 145, 0.3); background-color: rgba(104, 211, 145, 0.05); }
-.tag-quasi { color: #f6ad55; border-color: rgba(246, 173, 85, 0.3); background-color: rgba(246, 173, 85, 0.05); }
-.tag-market-design { color: #63b3ed; border-color: rgba(99, 179, 237, 0.3); background-color: rgba(99, 179, 237, 0.05); }
-.tag-policy { color: #fc8181; border-color: rgba(252, 129, 129, 0.3); background-color: rgba(252, 129, 129, 0.05); }
-.tag-data { color: #f6e05e; border-color: rgba(246, 224, 94, 0.3); background-color: rgba(246, 224, 94, 0.05); }
-.tag-ai { color: #f687b3; border-color: rgba(246, 135, 179, 0.3); background-color: rgba(246, 135, 179, 0.05); }
+.tag-structural { color: rgb(var(--tag-structural-rgb)); border-color: rgba(var(--tag-structural-rgb), 0.3); background-color: rgba(var(--tag-structural-rgb), 0.05); }
+.tag-surveys { color: rgb(var(--tag-surveys-rgb)); border-color: rgba(var(--tag-surveys-rgb), 0.3); background-color: rgba(var(--tag-surveys-rgb), 0.05); }
+.tag-rct { color: rgb(var(--tag-rct-rgb)); border-color: rgba(var(--tag-rct-rgb), 0.3); background-color: rgba(var(--tag-rct-rgb), 0.05); }
+.tag-quasi { color: rgb(var(--tag-quasi-rgb)); border-color: rgba(var(--tag-quasi-rgb), 0.3); background-color: rgba(var(--tag-quasi-rgb), 0.05); }
+.tag-market-design { color: rgb(var(--tag-market-design-rgb)); border-color: rgba(var(--tag-market-design-rgb), 0.3); background-color: rgba(var(--tag-market-design-rgb), 0.05); }
+.tag-policy { color: rgb(var(--tag-policy-rgb)); border-color: rgba(var(--tag-policy-rgb), 0.3); background-color: rgba(var(--tag-policy-rgb), 0.05); }
+.tag-data { color: rgb(var(--tag-data-rgb)); border-color: rgba(var(--tag-data-rgb), 0.3); background-color: rgba(var(--tag-data-rgb), 0.05); }
+.tag-ai { color: rgb(var(--tag-ai-rgb)); border-color: rgba(var(--tag-ai-rgb), 0.3); background-color: rgba(var(--tag-ai-rgb), 0.05); }
 
-.tag-education { color: #4fd1c5; border-color: rgba(79, 209, 197, 0.3); background-color: rgba(79, 209, 197, 0.05); }
-.tag-health { color: #f687b3; border-color: rgba(246, 135, 179, 0.3); background-color: rgba(246, 135, 179, 0.05); }
-.tag-labor { color: #f6ad55; border-color: rgba(246, 173, 85, 0.3); background-color: rgba(246, 173, 85, 0.05); }
-.tag-theory { color: #9f7aea; border-color: rgba(159, 122, 234, 0.3); background-color: rgba(159, 122, 234, 0.05); }
-.tag-info { color: #63b3ed; border-color: rgba(99, 179, 237, 0.3); background-color: rgba(99, 179, 237, 0.05); }
-.tag-evolution { color: #68d391; border-color: rgba(104, 211, 145, 0.3); background-color: rgba(104, 211, 145, 0.05); }
-.tag-implementation { color: #a0aec0; border-color: rgba(160, 174, 192, 0.3); background-color: rgba(160, 174, 192, 0.05); }
+.tag-education { color: rgb(var(--tag-education-rgb)); border-color: rgba(var(--tag-education-rgb), 0.3); background-color: rgba(var(--tag-education-rgb), 0.05); }
+.tag-health { color: rgb(var(--tag-health-rgb)); border-color: rgba(var(--tag-health-rgb), 0.3); background-color: rgba(var(--tag-health-rgb), 0.05); }
+.tag-labor { color: rgb(var(--tag-labor-rgb)); border-color: rgba(var(--tag-labor-rgb), 0.3); background-color: rgba(var(--tag-labor-rgb), 0.05); }
+.tag-theory { color: rgb(var(--tag-theory-rgb)); border-color: rgba(var(--tag-theory-rgb), 0.3); background-color: rgba(var(--tag-theory-rgb), 0.05); }
+.tag-info { color: rgb(var(--tag-info-rgb)); border-color: rgba(var(--tag-info-rgb), 0.3); background-color: rgba(var(--tag-info-rgb), 0.05); }
+.tag-evolution { color: rgb(var(--tag-evolution-rgb)); border-color: rgba(var(--tag-evolution-rgb), 0.3); background-color: rgba(var(--tag-evolution-rgb), 0.05); }
+.tag-implementation { color: rgb(var(--tag-implementation-rgb)); border-color: rgba(var(--tag-implementation-rgb), 0.3); background-color: rgba(var(--tag-implementation-rgb), 0.05); }
+
+/* Apply opacity to background and border using rgba trick or just opacity on element if possible, 
+   but here we need specific color opacity. 
+   Let's use a simpler approach: define the full rgba in variables or use a mix-blend-mode.
+   Actually, the previous CSS used rgba(r,g,b, 0.05). 
+   To support themes easily without complex calc(), we can use the 'opacity' property on the background 
+   if we use a pseudo-element, OR we can just set the colors directly in the theme variables 
+   including the alpha channel if we want to be precise.
+   
+   However, to keep it simple and working with the variables I defined above (hex codes),
+   I will use a small trick: `color-mix` if supported, or just set opacity on the background color 
+   if I can.
+   
+   Wait, the easiest way is to just use the hex codes I defined and add opacity to the background 
+   using `background-color: color-mix(in srgb, var(--tag-color), transparent 95%)`.
+   But `color-mix` support might be an issue for older browsers.
+   
+   Let's stick to the previous implementation but use the variables.
+   Since I can't easily convert hex var to rgba in pure CSS without color-mix, 
+   I will update the variables to be RGB comma separated values.
+*/
+
+/* Redefining variables to be RGB triplets for easier alpha usage */
+:root {
+    --tag-structural-rgb: 214, 188, 250;
+    --tag-surveys-rgb: 129, 230, 217;
+    --tag-rct-rgb: 104, 211, 145;
+    --tag-quasi-rgb: 246, 173, 85;
+    --tag-market-design-rgb: 99, 179, 237;
+    --tag-policy-rgb: 252, 129, 129;
+    --tag-data-rgb: 246, 224, 94;
+    --tag-ai-rgb: 246, 135, 179;
+    --tag-education-rgb: 79, 209, 197;
+    --tag-health-rgb: 246, 135, 179;
+    --tag-labor-rgb: 246, 173, 85;
+    --tag-theory-rgb: 159, 122, 234;
+    --tag-info-rgb: 99, 179, 237;
+    --tag-evolution-rgb: 104, 211, 145;
+    --tag-implementation-rgb: 160, 174, 192;
+}
+
+[data-theme="light"] {
+    --tag-structural-rgb: 128, 90, 213;
+    --tag-surveys-rgb: 49, 151, 149;
+    --tag-rct-rgb: 47, 133, 90;
+    --tag-quasi-rgb: 221, 107, 32;
+    --tag-market-design-rgb: 49, 130, 206;
+    --tag-policy-rgb: 229, 62, 62;
+    --tag-data-rgb: 214, 158, 46;
+    --tag-ai-rgb: 213, 63, 140;
+    --tag-education-rgb: 49, 151, 149;
+    --tag-health-rgb: 213, 63, 140;
+    --tag-labor-rgb: 221, 107, 32;
+    --tag-theory-rgb: 128, 90, 213;
+    --tag-info-rgb: 49, 130, 206;
+    --tag-evolution-rgb: 47, 133, 90;
+    --tag-implementation-rgb: 113, 128, 150;
+}
+
+.tag {
+    /* Re-implementing using the RGB variables */
+    background-color: transparent;
+    border: 1px solid;
+}
+
+.tag-structural { color: rgb(var(--tag-structural-rgb)); border-color: rgba(var(--tag-structural-rgb), 0.3); background-color: rgba(var(--tag-structural-rgb), 0.05); }
+.tag-surveys { color: rgb(var(--tag-surveys-rgb)); border-color: rgba(var(--tag-surveys-rgb), 0.3); background-color: rgba(var(--tag-surveys-rgb), 0.05); }
+.tag-rct { color: rgb(var(--tag-rct-rgb)); border-color: rgba(var(--tag-rct-rgb), 0.3); background-color: rgba(var(--tag-rct-rgb), 0.05); }
+.tag-quasi { color: rgb(var(--tag-quasi-rgb)); border-color: rgba(var(--tag-quasi-rgb), 0.3); background-color: rgba(var(--tag-quasi-rgb), 0.05); }
+.tag-market-design { color: rgb(var(--tag-market-design-rgb)); border-color: rgba(var(--tag-market-design-rgb), 0.3); background-color: rgba(var(--tag-market-design-rgb), 0.05); }
+.tag-policy { color: rgb(var(--tag-policy-rgb)); border-color: rgba(var(--tag-policy-rgb), 0.3); background-color: rgba(var(--tag-policy-rgb), 0.05); }
+.tag-data { color: rgb(var(--tag-data-rgb)); border-color: rgba(var(--tag-data-rgb), 0.3); background-color: rgba(var(--tag-data-rgb), 0.05); }
+.tag-ai { color: rgb(var(--tag-ai-rgb)); border-color: rgba(var(--tag-ai-rgb), 0.3); background-color: rgba(var(--tag-ai-rgb), 0.05); }
+
+.tag-education { color: rgb(var(--tag-education-rgb)); border-color: rgba(var(--tag-education-rgb), 0.3); background-color: rgba(var(--tag-education-rgb), 0.05); }
+.tag-health { color: rgb(var(--tag-health-rgb)); border-color: rgba(var(--tag-health-rgb), 0.3); background-color: rgba(var(--tag-health-rgb), 0.05); }
+.tag-labor { color: rgb(var(--tag-labor-rgb)); border-color: rgba(var(--tag-labor-rgb), 0.3); background-color: rgba(var(--tag-labor-rgb), 0.05); }
+.tag-theory { color: rgb(var(--tag-theory-rgb)); border-color: rgba(var(--tag-theory-rgb), 0.3); background-color: rgba(var(--tag-theory-rgb), 0.05); }
+.tag-info { color: rgb(var(--tag-info-rgb)); border-color: rgba(var(--tag-info-rgb), 0.3); background-color: rgba(var(--tag-info-rgb), 0.05); }
+.tag-evolution { color: rgb(var(--tag-evolution-rgb)); border-color: rgba(var(--tag-evolution-rgb), 0.3); background-color: rgba(var(--tag-evolution-rgb), 0.05); }
+.tag-implementation { color: rgb(var(--tag-implementation-rgb)); border-color: rgba(var(--tag-implementation-rgb), 0.3); background-color: rgba(var(--tag-implementation-rgb), 0.05); }
 
 .calendar {
     background: var(--card-bg);
     padding: 1.5rem;
     border-radius: 12px;
     box-shadow: var(--shadow-sm);
-    border: 1px solid #4a5568;
+    border: 1px solid var(--border-color);
     overflow-x: auto;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-lg);
+    background-color: var(--card-hover);
+}
+
+.theme-toggle i {
+    font-size: 1.2rem;
+    transition: transform 0.5s ease;
+}
+
+/* Rotate icon when switching */
+.theme-toggle.rotate i {
+    transform: rotate(360deg);
 }
 
 /* Responsive */
