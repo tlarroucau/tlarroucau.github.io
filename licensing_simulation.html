@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Licensing Simulation | Tomas Larroucau</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="style_v2.css">
+    
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <style>
+        /* Additional styles for simulation layout */
+        .simulation-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .controls-container {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-group label {
+            font-weight: 600;
+            color: var(--text-color);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .control-group input[type="range"] {
+            width: 100%;
+            accent-color: var(--accent-color);
+        }
+
+        .charts-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .charts-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .chart-wrapper {
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            min-height: 400px;
+            position: relative;
+        }
+
+        .equations-container {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            align-items: start;
+        }
+
+        .equations-container h3 {
+            grid-column: 1 / -1;
+            margin-bottom: 0.5rem;
+        }
+
+        .equation-block {
+            margin-bottom: 0;
+            overflow: hidden; /* Force hide scrollbars */
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE 10+ */
+        }
+        
+        .equation-block::-webkit-scrollbar { 
+            display: none;  /* Chrome/Safari */
+        }
+
+        .equation-block p {
+            margin-bottom: 0.2rem;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+        }
+        
+        /* Compact KaTeX display */
+        .katex-display {
+            margin: 0.3em 0 !important;
+            overflow-x: hidden; /* Ensure no scrollbar on the math element itself */
+            overflow-y: hidden;
+            font-size: 0.75em; /* Smaller to fit better */
+            scrollbar-width: none;
+        }
+        
+        .katex-display::-webkit-scrollbar {
+            display: none;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark/Light Mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <aside id="sidebar">
+        <div class="avatar">
+            <img src="images/avatar.jpg" alt="Tomas Larroucau">
+        </div>
+        <h1><a href="index.html#about">Tomas Larroucau</a></h1>
+        <nav>
+            <ul>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#research">Research</a></li>
+                <li><a href="index.html#code">Code & Projects</a></li>
+                <li><a href="index.html#education">Education</a></li>
+                <li><a href="index.html" class="active">Simulation</a></li>
+            </ul>
+        </nav>
+        <footer>
+            <ul class="icons">
+                <li><a href="tel:+1 215 900 67 43" title="Phone"><i class="fas fa-phone-square"></i></a></li>
+                <li><a href="mailto:Tomas.Larroucau@asu.edu" title="Email"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="https://github.com/tlarroucau/" title="Github"><i class="fab fa-github"></i></a></li>
+                <li><a href="https://scholar.google.com/citations?hl=en&user=nkw96qAAAAAJ" title="Google Scholar"><i class="ai ai-google-scholar-square"></i></a></li>
+            </ul>
+        </footer>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="main">
+        <a href="index.html#research" class="back-link"><i class="fas fa-arrow-left"></i> Back to Research</a>
+        
+        <section id="simulation" class="visible">
+            <h2>Physicians’ Occupational Licensing Simulation</h2>
+            <p>Explore the Quantity-Quality trade-off in occupational licensing. Adjust the threshold and parameters to see how they affect labor supply, average quality, and the optimal outcome.</p>
+
+            <div class="simulation-container">
+                
+                <!-- Controls -->
+                <div class="controls-container">
+                    <h3>Parameters</h3>
+                    <div class="controls-grid">
+                        <div class="control-group">
+                            <label><span>Mass ($m$):</span> <span id="val-m">1000</span></label>
+                            <input type="range" id="input-m" min="100" max="5000" step="100" value="1000">
+                        </div>
+                        <div class="control-group">
+                            <label><span>Matching probability ($p$):</span> <span id="val-p">1.0</span></label>
+                            <input type="range" id="input-p" min="0.1" max="1.0" step="0.1" value="1.0">
+                        </div>
+                        <div class="control-group">
+                            <label><span>Threshold ($\underline{s}$):</span> <span id="val-s">50</span></label>
+                            <input type="range" id="input-s" min="0" max="100" step="1" value="50">
+                        </div>
+                        <div class="control-group">
+                            <label><span>Returns to Quantity ($\alpha_L$):</span> <span id="val-alphaL">0.5</span></label>
+                            <input type="range" id="input-alphaL" min="0.1" max="2.0" step="0.1" value="0.5">
+                        </div>
+                        <div class="control-group">
+                            <label><span>Returns to Quality ($\alpha_\theta$):</span> <span id="val-alphaTheta">0.5</span></label>
+                            <input type="range" id="input-alphaTheta" min="0.1" max="2.0" step="0.1" value="0.5">
+                        </div>
+                        <div class="control-group">
+                            <label><span>Signal-to-Noise Ratio (SNR):</span> <span id="val-snr">0.8</span></label>
+                            <input type="range" id="input-snr" min="0.1" max="1.0" step="0.1" value="0.8">
+                        </div>
+                        <div class="control-group">
+                            <label><span>Mean Score ($\mu_s$):</span> <span id="val-mu">50</span></label>
+                            <input type="range" id="input-mu" min="20" max="80" step="1" value="50">
+                        </div>
+                        <div class="control-group">
+                            <label><span>Std Dev Score ($\sigma_s$):</span> <span id="val-sigma">15</span></label>
+                            <input type="range" id="input-sigma" min="5" max="30" step="1" value="15">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts -->
+                <div class="charts-container">
+                    <div class="chart-wrapper">
+                        <div id="chart-distribution"></div>
+                        <div id="dist-equation" style="position: absolute; top: 15%; right: 10%; pointer-events: none; z-index: 10; font-size: 0.9rem;">
+                            $$L = m \cdot p \cdot (1 - F(\underline{s}))$$
+                        </div>
+                    </div>
+                    <div class="chart-wrapper">
+                        <div id="chart-tradeoff"></div>
+                    </div>
+                </div>
+
+                <!-- Equations -->
+                <div class="equations-container">
+                    <h3>Key Equations</h3>
+                    <div class="equation-block">
+                        <p><strong>Production Function:</strong></p>
+                        $$ \begin{aligned} Y &= \exp(\alpha_{\theta}\bar{\theta}) \cdot L^{\alpha_L} \\ \implies \ln(Y) &= \alpha_L \ln(L) + \alpha_{\theta} \bar{\theta} \end{aligned} $$
+                    </div>
+                    <div class="equation-block">
+                        <p><strong>Elasticity of Labor w.r.t. Threshold:</strong></p>
+                        $$\eta^L_{\underline{s}} \equiv \frac{d\ln(L)}{d\underline{s}} = \frac{-m\,h(\underline{s})}{L}\cdot p(\underline{s})$$
+                    </div>
+                    <div class="equation-block">
+                        <p><strong>Semi-elasticity of Quality w.r.t. Threshold:</strong></p>
+                        $$\tilde{\eta}^{\bar{\theta}}_{\underline{s}} = -\eta^L_{\underline{s}} \cdot \text{SNR} \cdot \left(\mathbb{E}[s | s > \underline{s}] - \underline{s} \right)$$
+                    </div>
+                    <div class="equation-block">
+                        <p><strong>Marginal Rate of Transformation:</strong></p>
+                        $$R(\underline{s}) \equiv -\frac{d\bar{\theta}/d\underline{s}}{d\ln(L)/d\underline{s}} = \text{SNR} \cdot \left(\mathbb{E}[s | s > \underline{s}] - \underline{s} \right)$$
+                    </div>
+                    <div class="equation-block">
+                        <p><strong>Optimality Condition (Increasing threshold is beneficial iff):</strong></p>
+                        $$R(\underline{s}) > \frac{\alpha_L}{\alpha_{\theta}}$$
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <script src="script_v2.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false}
+                ]
+            });
+
+            // Simulation Logic
+            const inputs = {
+                m: document.getElementById('input-m'),
+                p: document.getElementById('input-p'),
+                s: document.getElementById('input-s'),
+                alphaL: document.getElementById('input-alphaL'),
+                alphaTheta: document.getElementById('input-alphaTheta'),
+                snr: document.getElementById('input-snr'),
+                mu: document.getElementById('input-mu'),
+                sigma: document.getElementById('input-sigma')
+            };
+
+            const displays = {
+                m: document.getElementById('val-m'),
+                p: document.getElementById('val-p'),
+                s: document.getElementById('val-s'),
+                alphaL: document.getElementById('val-alphaL'),
+                alphaTheta: document.getElementById('val-alphaTheta'),
+                snr: document.getElementById('val-snr'),
+                mu: document.getElementById('val-mu'),
+                sigma: document.getElementById('val-sigma')
+            };
+
+            // Normal Distribution Helpers
+            function pdf(x, mu, sigma) {
+                return (1 / (sigma * Math.sqrt(2 * Math.PI))) * Math.exp(-0.5 * Math.pow((x - mu) / sigma, 2));
+            }
+
+            function cdf(x, mu, sigma) {
+                return 0.5 * (1 + erf((x - mu) / (sigma * Math.sqrt(2))));
+            }
+
+            function erf(x) {
+                // Approximation of error function
+                var sign = (x >= 0) ? 1 : -1;
+                x = Math.abs(x);
+                var a1 =  0.254829592;
+                var a2 = -0.284496736;
+                var a3 =  1.421413741;
+                var a4 = -1.453152027;
+                var a5 =  1.061405429;
+                var p  =  0.3275911;
+                var t = 1.0 / (1.0 + p*x);
+                var y = 1.0 - (((((a5*t + a4)*t) + a3)*t + a2)*t + a1)*t*Math.exp(-x*x);
+                return sign*y;
+            }
+
+            function inverseMills(z) {
+                // phi(z) / (1 - Phi(z))
+                const phi = (1 / Math.sqrt(2 * Math.PI)) * Math.exp(-0.5 * z * z);
+                const Phi = 0.5 * (1 + erf(z / Math.sqrt(2)));
+                if (Phi >= 1) return 0; // Avoid division by zero
+                return phi / (1 - Phi);
+            }
+
+            function updateSimulation() {
+                // Get values
+                const m_val = parseFloat(inputs.m.value);
+                const p_val = parseFloat(inputs.p.value);
+                const s_min = parseFloat(inputs.s.value);
+                const alphaL = parseFloat(inputs.alphaL.value);
+                const alphaTheta = parseFloat(inputs.alphaTheta.value);
+                const snr = parseFloat(inputs.snr.value);
+                const mu = parseFloat(inputs.mu.value);
+                const sigma = parseFloat(inputs.sigma.value);
+
+                // Update displays
+                displays.m.textContent = m_val;
+                displays.p.textContent = p_val;
+                displays.s.textContent = s_min;
+                displays.alphaL.textContent = alphaL;
+                displays.alphaTheta.textContent = alphaTheta;
+                displays.snr.textContent = snr;
+                displays.mu.textContent = mu;
+                displays.sigma.textContent = sigma;
+
+                // --- Chart 1: Distribution ---
+                const xValues = [];
+                const yValues = [];
+                const xFill = [];
+                const yFill = [];
+                
+                for (let x = 0; x <= 100; x += 0.5) {
+                    const p = pdf(x, mu, sigma);
+                    xValues.push(x);
+                    yValues.push(p);
+                    if (x >= s_min) {
+                        xFill.push(x);
+                        yFill.push(p);
+                    }
+                }
+                // Close the fill shape
+                if (xFill.length > 0) {
+                    xFill.unshift(s_min);
+                    yFill.unshift(0);
+                    xFill.push(xFill[xFill.length-1]);
+                    yFill.push(0);
+                }
+
+                const traceDist = {
+                    x: xValues,
+                    y: yValues,
+                    type: 'scatter',
+                    mode: 'lines',
+                    name: 'Score PDF',
+                    line: { color: '#63b3ed' }
+                };
+
+                const traceFill = {
+                    x: xFill,
+                    y: yFill,
+                    fill: 'tozeroy',
+                    type: 'scatter',
+                    mode: 'none',
+                    name: 'Labor Supply',
+                    fillcolor: 'rgba(99, 179, 237, 0.3)'
+                };
+
+                const layoutDist = {
+                    title: 'Distribution of Test Takers',
+                    xaxis: { title: 'Score (s)', range: [0, 100] },
+                    yaxis: { title: 'Density' },
+                    paper_bgcolor: 'rgba(0,0,0,0)',
+                    plot_bgcolor: 'rgba(0,0,0,0)',
+                    font: { color: getComputedStyle(document.body).getPropertyValue('--text-color') },
+                    showlegend: false,
+                    margin: { t: 40, r: 20, l: 50, b: 40 }
+                };
+
+                // --- Chart 2: Trade-off (ln(L) vs theta_bar) ---
+                const feasibleX = []; // ln(L)
+                const feasibleY = []; // theta_bar
+                
+                // Calculate feasible set for s from 0 to 100
+                for (let s = 0; s <= 100; s += 1) {
+                    const z = (s - mu) / sigma;
+                    const prob_pass = 1 - cdf(s, mu, sigma);
+                    const L = m_val * p_val * prob_pass;
+                    
+                    if (L <= 1) continue; // Avoid log(0) or negative
+
+                    const E_s_cond = mu + sigma * inverseMills(z);
+                    const theta_bar = mu + snr * (E_s_cond - mu); // Assuming mu_theta = mu_s for simplicity
+
+                    feasibleX.push(Math.log(L));
+                    feasibleY.push(theta_bar);
+                }
+
+                // Current Point
+                const z_curr = (s_min - mu) / sigma;
+                const L_curr = m_val * p_val * (1 - cdf(s_min, mu, sigma));
+                const E_s_curr = mu + sigma * inverseMills(z_curr);
+                const theta_bar_curr = mu + snr * (E_s_curr - mu);
+                const lnL_curr = Math.log(L_curr);
+
+                // Isoquant passing through current point
+                // ln(Y) = alphaL * lnL + alphaTheta * theta_bar = C
+                const C = alphaL * lnL_curr + alphaTheta * theta_bar_curr;
+                
+                const isoquantX = [];
+                const isoquantY = [];
+                
+                // Generate isoquant points around the current lnL
+                for (let lnL = lnL_curr - 2; lnL <= lnL_curr + 2; lnL += 0.1) {
+                    // theta_bar = (C - alphaL * lnL) / alphaTheta
+                    const th = (C - alphaL * lnL) / alphaTheta;
+                    isoquantX.push(lnL);
+                    isoquantY.push(th);
+                }
+
+                const traceFeasible = {
+                    x: feasibleY,
+                    y: feasibleX,
+                    type: 'scatter',
+                    mode: 'lines',
+                    name: 'Feasible Set',
+                    line: { color: '#68d391', width: 3 }
+                };
+
+                const traceIsoquant = {
+                    x: isoquantY,
+                    y: isoquantX,
+                    type: 'scatter',
+                    mode: 'lines',
+                    name: 'Isoquant',
+                    line: { color: '#fc8181', dash: 'dash' }
+                };
+
+                const tracePoint = {
+                    x: [theta_bar_curr],
+                    y: [lnL_curr],
+                    type: 'scatter',
+                    mode: 'markers',
+                    name: 'Current Threshold',
+                    marker: { size: 12, color: '#f6e05e', line: {color: '#fff', width: 2} }
+                };
+
+                const layoutTradeoff = {
+                    title: 'Quantity-Quality Trade-off',
+                    xaxis: { title: 'Average Quality' },
+                    yaxis: { title: 'ln(Labor Supply)' },
+                    paper_bgcolor: 'rgba(0,0,0,0)',
+                    plot_bgcolor: 'rgba(0,0,0,0)',
+                    font: { color: getComputedStyle(document.body).getPropertyValue('--text-color') },
+                    showlegend: true,
+                    legend: { x: 1, y: 1 },
+                    margin: { t: 40, r: 20, l: 50, b: 40 }
+                };
+
+                Plotly.newPlot('chart-distribution', [traceDist, traceFill], layoutDist, {displayModeBar: false});
+                Plotly.newPlot('chart-tradeoff', [traceFeasible, traceIsoquant, tracePoint], layoutTradeoff, {displayModeBar: false});
+            }
+
+            // Event Listeners
+            Object.values(inputs).forEach(input => {
+                input.addEventListener('input', updateSimulation);
+            });
+
+            // Initial Render
+            updateSimulation();
+
+            // Handle Theme Change for Charts
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === "attributes" && mutation.attributeName === "data-theme") {
+                        updateSimulation(); // Re-render to pick up new CSS variable colors
+                    }
+                });
+            });
+            observer.observe(document.documentElement, { attributes: true });
+        });
+    </script>
+</body>
+</html>
