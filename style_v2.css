@@ -348,12 +348,12 @@ p {
 
 /* Other links (See paper, etc) */
 .card blockquote > a:not(:first-child) {
-    color: var(--paper-link-color);
+    color: var(--text-muted);
     font-weight: 500;
 }
 
 .card blockquote > a:not(:first-child):hover {
-    color: var(--link-hover-color);
+    color: var(--accent-color);
 }
 
 /* Journal Names */
