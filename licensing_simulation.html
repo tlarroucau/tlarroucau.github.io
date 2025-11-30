@@ -13,6 +13,8 @@
     
     <!-- Plotly.js -->
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <!-- MathJax for Plotly LaTeX -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <!-- KaTeX -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -203,12 +205,12 @@
                             <input type="range" id="input-s" min="0" max="100" step="1" value="50">
                         </div>
                         <div class="control-group">
-                            <label><span>Returns to Quantity ($\alpha_L$):</span> <span id="val-alphaL">0.5</span></label>
-                            <input type="range" id="input-alphaL" min="0.1" max="2.0" step="0.1" value="0.5">
+                            <label><span>Returns to Quantity ($\alpha_L$):</span> <span id="val-alphaL">1.5</span></label>
+                            <input type="range" id="input-alphaL" min="0.1" max="2.0" step="0.1" value="1.5">
                         </div>
                         <div class="control-group">
-                            <label><span>Returns to Quality ($\alpha_\theta$):</span> <span id="val-alphaTheta">0.5</span></label>
-                            <input type="range" id="input-alphaTheta" min="0.1" max="2.0" step="0.1" value="0.5">
+                            <label><span>Returns to Quality ($\alpha_\theta$):</span> <span id="val-alphaTheta">0.3</span></label>
+                            <input type="range" id="input-alphaTheta" min="0.1" max="2.0" step="0.1" value="0.3">
                         </div>
                         <div class="control-group">
                             <label><span>Signal-to-Noise Ratio (SNR):</span> <span id="val-snr">0.8</span></label>
@@ -235,6 +237,9 @@
                     </div>
                     <div class="chart-wrapper">
                         <div id="chart-tradeoff"></div>
+                        <div id="optimality-equation" style="position: absolute; bottom: 15%; left: 15%; pointer-events: none; z-index: 10; font-size: 0.9rem;">
+                            $$ \text{Raise } \underline{s} \iff R(\underline{s}) > \frac{\alpha_L}{\alpha_{\theta}} $$
+                        </div>
                     </div>
                 </div>
 
@@ -256,10 +261,6 @@
                     <div class="equation-block">
                         <p><strong>Marginal Rate of Transformation:</strong></p>
                         $$R(\underline{s}) \equiv -\frac{d\bar{\theta}/d\underline{s}}{d\ln(L)/d\underline{s}} = \text{SNR} \cdot \left(\mathbb{E}[s | s > \underline{s}] - \underline{s} \right)$$
-                    </div>
-                    <div class="equation-block">
-                        <p><strong>Optimality Condition (Increasing threshold is beneficial iff):</strong></p>
-                        $$R(\underline{s}) > \frac{\alpha_L}{\alpha_{\theta}}$$
                     </div>
                 </div>
 
@@ -483,7 +484,91 @@
                     font: { color: getComputedStyle(document.body).getPropertyValue('--text-color') },
                     showlegend: true,
                     legend: { x: 0.95, y: 0.95, xanchor: 'right', yanchor: 'top', bgcolor: 'rgba(0,0,0,0)' },
-                    margin: { t: 40, r: 20, l: 50, b: 40 }
+                    margin: { t: 40, r: 20, l: 50, b: 40 },
+                    shapes: [
+                        // Central Vertical leg (Height 1)
+                        {
+                            type: 'line',
+                            x0: theta_bar_curr,
+                            y0: lnL_curr,
+                            x1: theta_bar_curr,
+                            y1: lnL_curr - 1,
+                            line: { color: 'gray', width: 1, dash: 'dot' }
+                        },
+                        // Red Horizontal leg (Ratio of Returns) - Bottom
+                        {
+                            type: 'line',
+                            x0: theta_bar_curr,
+                            y0: lnL_curr - 1,
+                            x1: theta_bar_curr + (alphaL / alphaTheta),
+                            y1: lnL_curr - 1,
+                            line: { color: '#fc8181', width: 2, dash: 'dash' }
+                        },
+                        // Green Horizontal leg (Frontier R(s)) - Top
+                        {
+                            type: 'line',
+                            x0: theta_bar_curr,
+                            y0: lnL_curr,
+                            x1: theta_bar_curr + (snr * (E_s_curr - s_min)),
+                            y1: lnL_curr,
+                            line: { color: '#68d391', width: 2, dash: 'dash' }
+                        },
+                        // Green Vertical leg (Drop at end)
+                        {
+                            type: 'line',
+                            x0: theta_bar_curr + (snr * (E_s_curr - s_min)),
+                            y0: lnL_curr,
+                            x1: theta_bar_curr + (snr * (E_s_curr - s_min)),
+                            y1: lnL_curr - 1,
+                            line: { color: '#68d391', width: 1, dash: 'dot' }
+                        }
+                    ],
+                    annotations: [
+                        // Label for Height 1 (on the Central vertical leg)
+                        {
+                            x: theta_bar_curr,
+                            y: lnL_curr - 0.5,
+                            xref: 'x',
+                            yref: 'y',
+                            text: '1',
+                            showarrow: false,
+                            xshift: -10,
+                            font: { color: 'gray', size: 10 }
+                        },
+                        // Label for Height 1 (on the Green vertical leg)
+                        {
+                            x: theta_bar_curr + (snr * (E_s_curr - s_min)),
+                            y: lnL_curr - 0.5,
+                            xref: 'x',
+                            yref: 'y',
+                            text: '1',
+                            showarrow: false,
+                            xshift: 10,
+                            font: { color: '#68d391', size: 10 }
+                        },
+                        // Label for Ratio of Returns (Below Red Horizontal)
+                        {
+                            x: theta_bar_curr + (alphaL / alphaTheta) / 2,
+                            y: lnL_curr - 1,
+                            xref: 'x',
+                            yref: 'y',
+                            text: '$\\alpha_L / \\alpha_\\theta$',
+                            showarrow: false,
+                            yshift: -15,
+                            font: { color: '#fc8181', size: 10 }
+                        },
+                        // Label for R(s) (Above Green Horizontal)
+                        {
+                            x: theta_bar_curr + (snr * (E_s_curr - s_min)) / 2,
+                            y: lnL_curr,
+                            xref: 'x',
+                            yref: 'y',
+                            text: '$R(s)$',
+                            showarrow: false,
+                            yshift: 15,
+                            font: { color: '#68d391', size: 10 }
+                        }
+                    ]
                 };
 
                 Plotly.newPlot('chart-distribution', [traceDist, traceFill], layoutDist, {displayModeBar: false});
@@ -497,16 +582,6 @@
 
             // Initial Render
             updateSimulation();
-
-            // Handle Theme Change for Charts
-            const observer = new MutationObserver(function(mutations) {
-                mutations.forEach(function(mutation) {
-                    if (mutation.type === "attributes" && mutation.attributeName === "data-theme") {
-                        updateSimulation(); // Re-render to pick up new CSS variable colors
-                    }
-                });
-            });
-            observer.observe(document.documentElement, { attributes: true });
         });
     </script>
 </body>
