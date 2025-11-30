@@ -30,7 +30,7 @@
         
         .controls-container {
             background: var(--card-bg);
-            padding: 1.5rem;
+            padding: 1rem; /* Reduced from 1.5rem */
             border-radius: 12px;
             border: 1px solid var(--border-color);
             box-shadow: var(--shadow-sm);
@@ -38,14 +38,14 @@
 
         .controls-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Reduced min-width from 250px */
+            gap: 1rem; /* Reduced from 1.5rem */
         }
 
         .control-group {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.25rem; /* Reduced from 0.5rem */
         }
 
         .control-group label {
@@ -53,11 +53,13 @@
             color: var(--text-color);
             display: flex;
             justify-content: space-between;
+            font-size: 0.9rem; /* Slightly smaller font */
         }
 
         .control-group input[type="range"] {
             width: 100%;
             accent-color: var(--accent-color);
+            height: 4px; /* Thinner slider track */
         }
 
         .charts-container {
@@ -227,10 +229,10 @@
                 border: 1px solid var(--border-color);
                 opacity: 0.9;
                 /* Reset positions to be safer */
-                top: 10px !important;
-                right: 10px !important;
-                bottom: auto !important;
-                left: auto !important;
+                top: auto !important;
+                right: auto !important;
+                bottom: 10px !important;
+                left: 10px !important;
             }
         }
 
