@@ -185,12 +185,12 @@
             /* Stack charts and reduce height */
             .charts-container {
                 grid-template-columns: 1fr;
-                gap: 1rem;
+                gap: 0.5rem; /* Reduced gap */
             }
             
             .chart-wrapper {
-                min-height: 160px; /* Reduced from 200px to fit better on mobile screens */
-                padding: 0.5rem;
+                min-height: 120px; /* Drastically reduced to fit both on screen */
+                padding: 0.25rem; /* Minimal padding */
             }
 
             /* Single column controls for better touch targets */
@@ -550,7 +550,7 @@
                     plot_bgcolor: 'rgba(0,0,0,0)',
                     font: { color: textColor },
                     showlegend: false,
-                    margin: window.innerWidth < 768 ? { t: 30, r: 10, l: 40, b: 30 } : { t: 40, r: 20, l: 50, b: 40 }, // Tighter margins on mobile
+                    margin: window.innerWidth < 768 ? { t: 20, r: 5, l: 30, b: 20 } : { t: 40, r: 20, l: 50, b: 40 }, // Very tight margins on mobile
                     shapes: [
                         {
                             type: 'line',
@@ -660,7 +660,7 @@
                     font: { color: textColor },
                     showlegend: true,
                     legend: { x: 0.95, y: 0.95, xanchor: 'right', yanchor: 'top', bgcolor: 'rgba(0,0,0,0)' },
-                    margin: window.innerWidth < 768 ? { t: 30, r: 10, l: 40, b: 30 } : { t: 40, r: 20, l: 50, b: 40 }, // Tighter margins on mobile
+                    margin: window.innerWidth < 768 ? { t: 20, r: 5, l: 30, b: 20 } : { t: 40, r: 20, l: 50, b: 40 }, // Very tight margins on mobile
                     shapes: [
                         // Central Vertical leg (Height 1) - Red
                         {
