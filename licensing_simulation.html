@@ -144,6 +144,87 @@
         .back-link:hover {
             text-decoration: underline;
         }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            /* Move theme toggle to bottom right for easier thumb access */
+            .theme-toggle {
+                top: auto;
+                bottom: 1.5rem;
+                right: 1.5rem;
+                width: 56px; /* Larger touch target */
+                height: 56px;
+                font-size: 1.4rem;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            }
+
+            /* Adjust main container padding */
+            #main {
+                padding: 1rem !important; /* Override style.css */
+            }
+
+            .simulation-container {
+                gap: 1.5rem;
+            }
+
+            /* Stack charts and reduce height */
+            .charts-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .chart-wrapper {
+                min-height: 300px;
+                padding: 0.5rem;
+            }
+
+            /* Single column controls for better touch targets */
+            .controls-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+            
+            .controls-container {
+                padding: 1.25rem;
+            }
+
+            /* Larger sliders for touch */
+            input[type="range"] {
+                height: 30px;
+            }
+
+            /* Stack equations */
+            .equations-container {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+            
+            /* Adjust equation text size and scrolling */
+            .equation-block {
+                padding: 0.75rem;
+                overflow-x: auto;
+            }
+            
+            .katex-display {
+                font-size: 0.8em;
+                margin: 0.5em 0 !important;
+            }
+            
+            /* Reposition chart overlays to avoid clutter */
+            #dist-equation, #optimality-equation {
+                font-size: 0.75rem !important;
+                background: var(--card-bg);
+                padding: 4px 8px;
+                border-radius: 6px;
+                border: 1px solid var(--border-color);
+                opacity: 0.9;
+                /* Reset positions to be safer */
+                top: 10px !important;
+                right: 10px !important;
+                bottom: auto !important;
+                left: auto !important;
+            }
+        }
     </style>
 </head>
 <body>
