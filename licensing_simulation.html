@@ -180,17 +180,25 @@
 
             /* Single column controls for better touch targets */
             .controls-grid {
-                grid-template-columns: 1fr;
-                gap: 1.25rem;
+                grid-template-columns: 1fr 1fr; /* Two columns for compactness */
+                gap: 0.5rem; /* Tighter gap */
             }
             
             .controls-container {
-                padding: 1.25rem;
+                padding: 0.75rem; /* Reduced padding */
             }
 
-            /* Larger sliders for touch */
+            .control-group {
+                gap: 0.2rem; /* Tighter vertical spacing within group */
+            }
+
+            .control-group label {
+                font-size: 0.8rem; /* Smaller font */
+            }
+
+            /* Smaller sliders for touch */
             input[type="range"] {
-                height: 30px;
+                height: 20px; /* Reduced height */
             }
 
             /* Stack equations */
@@ -223,6 +231,17 @@
                 right: 10px !important;
                 bottom: auto !important;
                 left: auto !important;
+            }
+        }
+
+        /* Landscape Mode Optimization */
+        @media (max-width: 900px) and (orientation: landscape) {
+            .charts-container {
+                grid-template-columns: 1fr 1fr; /* Side by side in landscape */
+            }
+            
+            .chart-wrapper {
+                min-height: 250px; /* Shorter height for landscape */
             }
         }
     </style>
@@ -698,14 +717,23 @@
                     ]
                 };
 
-                Plotly.newPlot('chart-distribution', [traceDist, traceFill], layoutDist, {displayModeBar: false});
-                Plotly.newPlot('chart-tradeoff', [traceFeasible, traceIsoquant, tracePoint], layoutTradeoff, {displayModeBar: false});
+                Plotly.newPlot('chart-distribution', [traceDist, traceFill], layoutDist, {
+                    displayModeBar: false,
+                    staticPlot: window.innerWidth < 768 // Disable interactions on mobile
+                });
+                Plotly.newPlot('chart-tradeoff', [traceFeasible, traceIsoquant, tracePoint], layoutTradeoff, {
+                    displayModeBar: false,
+                    staticPlot: window.innerWidth < 768 // Disable interactions on mobile
+                });
             }
 
             // Event Listeners
             Object.values(inputs).forEach(input => {
                 input.addEventListener('input', updateSimulation);
             });
+            
+            // Re-render on resize to handle layout changes
+            window.addEventListener('resize', updateSimulation);
 
             // Watch for theme changes to update chart colors
             const observer = new MutationObserver(function(mutations) {
