@@ -189,7 +189,7 @@
             }
             
             .chart-wrapper {
-                min-height: 300px;
+                min-height: 200px; /* Reduced from 300px to fit better on mobile screens */
                 padding: 0.5rem;
             }
 
@@ -550,7 +550,7 @@
                     plot_bgcolor: 'rgba(0,0,0,0)',
                     font: { color: textColor },
                     showlegend: false,
-                    margin: { t: 40, r: 20, l: 50, b: 40 },
+                    margin: window.innerWidth < 768 ? { t: 30, r: 10, l: 40, b: 30 } : { t: 40, r: 20, l: 50, b: 40 }, // Tighter margins on mobile
                     shapes: [
                         {
                             type: 'line',
@@ -660,7 +660,7 @@
                     font: { color: textColor },
                     showlegend: true,
                     legend: { x: 0.95, y: 0.95, xanchor: 'right', yanchor: 'top', bgcolor: 'rgba(0,0,0,0)' },
-                    margin: { t: 40, r: 20, l: 50, b: 40 },
+                    margin: window.innerWidth < 768 ? { t: 30, r: 10, l: 40, b: 30 } : { t: 40, r: 20, l: 50, b: 40 }, // Tighter margins on mobile
                     shapes: [
                         // Central Vertical leg (Height 1) - Red
                         {
