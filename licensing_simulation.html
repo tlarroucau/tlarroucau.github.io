@@ -344,6 +344,10 @@
                 const mu = parseFloat(inputs.mu.value);
                 const sigma = parseFloat(inputs.sigma.value);
 
+                // Determine Theme for Text Contrast
+                const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+                const textColor = isLight ? '#000000' : '#e2e8f0'; // Max contrast for light mode
+
                 // Update displays
                 displays.m.textContent = m_val;
                 displays.p.textContent = p_val;
@@ -402,9 +406,31 @@
                     yaxis: { title: 'Density' },
                     paper_bgcolor: 'rgba(0,0,0,0)',
                     plot_bgcolor: 'rgba(0,0,0,0)',
-                    font: { color: getComputedStyle(document.body).getPropertyValue('--text-color') },
+                    font: { color: textColor },
                     showlegend: false,
-                    margin: { t: 40, r: 20, l: 50, b: 40 }
+                    margin: { t: 40, r: 20, l: 50, b: 40 },
+                    shapes: [
+                        {
+                            type: 'line',
+                            x0: s_min,
+                            y0: 0,
+                            x1: s_min,
+                            y1: 1,
+                            yref: 'paper',
+                            line: { color: 'gray', width: 2, dash: 'dash' }
+                        }
+                    ],
+                    annotations: [
+                        {
+                            x: s_min,
+                            y: 1,
+                            yref: 'paper',
+                            text: '$\\underline{s}$',
+                            showarrow: false,
+                            yshift: 10,
+                            font: { color: textColor, size: 14 }
+                        }
+                    ]
                 };
 
                 // --- Chart 2: Trade-off (ln(L) vs theta_bar) ---
@@ -481,7 +507,7 @@
                     yaxis: { title: 'ln(Labor Supply)' },
                     paper_bgcolor: 'rgba(0,0,0,0)',
                     plot_bgcolor: 'rgba(0,0,0,0)',
-                    font: { color: getComputedStyle(document.body).getPropertyValue('--text-color') },
+                    font: { color: textColor },
                     showlegend: true,
                     legend: { x: 0.95, y: 0.95, xanchor: 'right', yanchor: 'top', bgcolor: 'rgba(0,0,0,0)' },
                     margin: { t: 40, r: 20, l: 50, b: 40 },
@@ -578,6 +604,19 @@
             // Event Listeners
             Object.values(inputs).forEach(input => {
                 input.addEventListener('input', updateSimulation);
+            });
+
+            // Watch for theme changes to update chart colors
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === "attributes" && mutation.attributeName === "data-theme") {
+                        updateSimulation();
+                    }
+                });
+            });
+            
+            observer.observe(document.documentElement, {
+                attributes: true
             });
 
             // Initial Render
