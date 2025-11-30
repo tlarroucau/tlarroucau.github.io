@@ -512,14 +512,14 @@
                     legend: { x: 0.95, y: 0.95, xanchor: 'right', yanchor: 'top', bgcolor: 'rgba(0,0,0,0)' },
                     margin: { t: 40, r: 20, l: 50, b: 40 },
                     shapes: [
-                        // Central Vertical leg (Height 1)
+                        // Central Vertical leg (Height 1) - Red
                         {
                             type: 'line',
                             x0: theta_bar_curr,
                             y0: lnL_curr,
                             x1: theta_bar_curr,
                             y1: lnL_curr - 1,
-                            line: { color: 'gray', width: 1, dash: 'dot' }
+                            line: { color: '#fc8181', width: 1, dash: 'dot' }
                         },
                         // Red Horizontal leg (Ratio of Returns) - Bottom
                         {
@@ -547,7 +547,8 @@
                             x1: theta_bar_curr + (snr * (E_s_curr - s_min)),
                             y1: lnL_curr - 1,
                             line: { color: '#68d391', width: 1, dash: 'dot' }
-                        }
+                        },
+                        // Dashed vertical line for threshold in Distribution chart (added here for completeness if needed, but it's in layoutDist)
                     ],
                     annotations: [
                         // Label for Height 1 (on the Central vertical leg)
@@ -559,7 +560,7 @@
                             text: '1',
                             showarrow: false,
                             xshift: -10,
-                            font: { color: 'gray', size: 10 }
+                            font: { color: '#fc8181', size: 10 }
                         },
                         // Label for Height 1 (on the Green vertical leg)
                         {
