@@ -344,9 +344,11 @@
                 const mu = parseFloat(inputs.mu.value);
                 const sigma = parseFloat(inputs.sigma.value);
 
-                // Determine Theme for Text Contrast
+                // Determine Theme for Text Contrast and Grid
                 const isLight = document.documentElement.getAttribute('data-theme') === 'light';
                 const textColor = isLight ? '#000000' : '#e2e8f0'; // Max contrast for light mode
+                const gridColor = isLight ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.07)';
+                const zeroLineColor = isLight ? 'rgba(0, 0, 0, 0.3)' : 'rgba(255, 255, 255, 0.3)';
 
                 // Update displays
                 displays.m.textContent = m_val;
@@ -402,8 +404,17 @@
 
                 const layoutDist = {
                     title: 'Distribution of Test Takers',
-                    xaxis: { title: 'Score (s)', range: [0, 100] },
-                    yaxis: { title: 'Density' },
+                    xaxis: { 
+                        title: 'Score (s)', 
+                        range: [0, 100],
+                        gridcolor: gridColor,
+                        zerolinecolor: zeroLineColor
+                    },
+                    yaxis: { 
+                        title: 'Density',
+                        gridcolor: gridColor,
+                        zerolinecolor: zeroLineColor
+                    },
                     paper_bgcolor: 'rgba(0,0,0,0)',
                     plot_bgcolor: 'rgba(0,0,0,0)',
                     font: { color: textColor },
@@ -503,8 +514,16 @@
 
                 const layoutTradeoff = {
                     title: 'Quantity-Quality Trade-off',
-                    xaxis: { title: 'Average Quality' },
-                    yaxis: { title: 'ln(Labor Supply)' },
+                    xaxis: { 
+                        title: 'Average Quality',
+                        gridcolor: gridColor,
+                        zerolinecolor: zeroLineColor
+                    },
+                    yaxis: { 
+                        title: 'ln(Labor Supply)',
+                        gridcolor: gridColor,
+                        zerolinecolor: zeroLineColor
+                    },
                     paper_bgcolor: 'rgba(0,0,0,0)',
                     plot_bgcolor: 'rgba(0,0,0,0)',
                     font: { color: textColor },
