@@ -147,8 +147,21 @@
             text-decoration: underline;
         }
 
+        /* Label toggling for responsive text */
+        .mobile-label {
+            display: none;
+        }
+
         /* Mobile Optimizations */
         @media (max-width: 768px) {
+            /* Toggle labels */
+            .desktop-label {
+                display: none;
+            }
+            .mobile-label {
+                display: inline;
+            }
+
             /* Move theme toggle to bottom right for easier thumb access */
             .theme-toggle {
                 top: auto;
@@ -299,7 +312,11 @@
                             <input type="range" id="input-m" min="100" max="5000" step="100" value="1000">
                         </div>
                         <div class="control-group">
-                            <label><span>Matching probability ($p$):</span> <span id="val-p">1.0</span></label>
+                            <label>
+                                <span class="desktop-label">Matching probability ($p$):</span>
+                                <span class="mobile-label">Matching prob ($p$):</span>
+                                <span id="val-p">1.0</span>
+                            </label>
                             <input type="range" id="input-p" min="0.1" max="1.0" step="0.1" value="1.0">
                         </div>
                         <div class="control-group">
@@ -307,15 +324,27 @@
                             <input type="range" id="input-s" min="0" max="100" step="1" value="50">
                         </div>
                         <div class="control-group">
-                            <label><span>Returns to Quantity ($\alpha_L$):</span> <span id="val-alphaL">1.5</span></label>
+                            <label>
+                                <span class="desktop-label">Returns to Quantity ($\alpha_L$):</span>
+                                <span class="mobile-label">Quantity return ($\alpha_L$):</span>
+                                <span id="val-alphaL">1.5</span>
+                            </label>
                             <input type="range" id="input-alphaL" min="0.1" max="2.0" step="0.1" value="1.5">
                         </div>
                         <div class="control-group">
-                            <label><span>Returns to Quality ($\alpha_\theta$):</span> <span id="val-alphaTheta">0.3</span></label>
+                            <label>
+                                <span class="desktop-label">Returns to Quality ($\alpha_\theta$):</span>
+                                <span class="mobile-label">Quality return ($\alpha_\theta$):</span>
+                                <span id="val-alphaTheta">0.3</span>
+                            </label>
                             <input type="range" id="input-alphaTheta" min="0.1" max="2.0" step="0.1" value="0.3">
                         </div>
                         <div class="control-group">
-                            <label><span>Signal-to-Noise Ratio (SNR):</span> <span id="val-snr">0.8</span></label>
+                            <label>
+                                <span class="desktop-label">Signal-to-Noise Ratio (SNR):</span>
+                                <span class="mobile-label">SNR:</span>
+                                <span id="val-snr">0.8</span>
+                            </label>
                             <input type="range" id="input-snr" min="0.1" max="1.0" step="0.1" value="0.8">
                         </div>
                         <div class="control-group">
