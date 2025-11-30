@@ -47,6 +47,9 @@
     --tag-evolution: #68d391;
     --tag-implementation: #a0aec0;
     
+    /* Paper Link Color (Dark) */
+    --paper-link-color: #90cdf4; /* Light blue, softer than accent */
+    
     /* Tag Borders/Backgrounds (Dark) */
     --tag-bg-opacity: 0.05;
     --tag-border-opacity: 0.3;
@@ -81,6 +84,9 @@
 
     /* Journal Title (Light) */
     --journal-title-color: #1a202c;
+
+    /* Paper Link Color (Light) */
+    --paper-link-color: #63b3ed; /* Light blue, softer than accent */
 
     /* Tag Colors (Light) */
     --tag-structural: #805ad5;
@@ -342,13 +348,12 @@ p {
 
 /* Other links (See paper, etc) */
 .card blockquote > a:not(:first-child) {
-    color: var(--text-muted);
+    color: var(--paper-link-color);
     font-weight: 500;
-    font-size: 0.9rem;
 }
 
 .card blockquote > a:not(:first-child):hover {
-    color: var(--accent-color);
+    color: var(--link-hover-color);
 }
 
 /* Journal Names */
