@@ -762,6 +762,17 @@
                             showarrow: false,
                             yshift: 15,
                             font: { color: '#68d391', size: 10 }
+                        },
+                        // Label for Isoquant Curve
+                        {
+                            x: (C - alphaL * (lnL_curr - 2.0)) / alphaTheta,
+                            y: lnL_curr - 2.0,
+                            xref: 'x',
+                            yref: 'y',
+                            text: '$\\ln(Y) = \\alpha_L \\ln(L) + \\alpha_{\\theta} \\bar{\\theta}$',
+                            showarrow: false,
+                            yshift: -15,
+                            font: { color: '#fc8181', size: 9 }
                         }
                     ]
                 };
