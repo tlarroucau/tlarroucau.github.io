@@ -1,0 +1,29 @@
+# Local/generated files not intended for GitHub
+.firecrawl/
+data/italy_gdp.csv
+
+# Alternate/prototype pages
+domenico.html
+esteban.html
+esteban_pokemon.html
+index_forest.html
+index_jurassic.html
+index_premium.html
+index_starwars.html
+
+# Alternate/prototype scripts
+script_forest.js
+script_premium.js
+script_starwars.js
+
+# Alternate/prototype styles
+style_domenico.css
+style_esteban.css
+style_forest.css
+style_pokemon.css
+style_premium.css
+style_starwars.css
+
+# Local images for ignored prototype pages
+images/domenico.jpg
+images/esteban.jpg
